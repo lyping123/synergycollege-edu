@@ -18,6 +18,7 @@
         background-color: #18153d;
         display: flex;
         color: white;
+        height: auto;
     }
 
     .container {
@@ -32,7 +33,7 @@
         padding-left: 30px;
         padding-right: 30px;
         padding-top: 10px;
-        height: 100vh;
+        height: 320vh;
     }
 
     .sidebar h2 {
@@ -121,8 +122,64 @@
     height: 80px;
 }
 
+.chart{
+    width: 45%;
+    position: absolute;
+    margin-left: 630px;
+   
+}
 
+.chart-container{
+    position: absolute;
+}
 
+.contacted-people-list{
+    position: absolute;
+    margin-top: 400px;
+    margin-left: 680px;
+}
+
+th,td{
+    border: 1px solid white;
+    padding: 20px;
+    width: 180px;
+    height: 10px;
+    text-align: center;
+}
+
+.student-appointments{
+    position: absolute;
+    margin-top: 680px;
+    margin-left: ;
+}
+
+.head{
+    background-color: #CF9FFF;
+    color: black;
+}
+
+.head1{
+    background-color: paleturquoise;
+    color: black;
+}
+
+.head2{
+    background-color: white;
+    color: black;
+}
+
+.head3{
+    background-color: white;
+    color: black;
+}
+
+h3{
+    font-size: 20px;
+}
+
+table{
+    width: 90%;
+}
 </style>
 
 <body>
@@ -134,8 +191,11 @@
                 <li><a href="/students" <?php echo $_SERVER['REQUEST_URI'] == '/students' ? 'style="color:#ea2328;"' : ''; ?>>STUDENT LISTS</a></li>
                 
                 <li><a href="/notice" <?php echo $_SERVER['REQUEST_URI'] == '/notice' ? 'style="color:#ea2328;"' : ''; ?>>NOTIFICATION</a></li>
+                <li><a href="/appointment" <?php echo $_SERVER['REQUEST_URI'] == '/appointment' ? 'style="color:#ea2328;"' : ''; ?>>APPOINTMENT VERIFY</a></li>
+                <li><a href="/image" <?php echo $_SERVER['REQUEST_URI'] == '/image' ? 'style="color:#ea2328;"' : ''; ?>>UPDATE IMAGE</a></li>
+                <li><a href="/update_new" <?php echo $_SERVER['REQUEST_URI'] == '/update_new' ? 'style="color:#ea2328;"' : ''; ?>>UPDATE CONTACT</a></li>
                 
-                
+            </ul>
             </ul>
 
             <form action="{{ route('logout') }}" method="POST" style="display: inline;">
@@ -161,6 +221,68 @@
                 </div>
                 
             </section>
+
+
+            <section class="monthly-contacted">
+                <div class="chart">
+                    <canvas id="monthlyBarChart"></canvas>
+                </div>
+            </section>
+
+
+            <section class="contacted-people-list">
+                <h3 style="color: white;">LIST OF ALREADY CONTACTED PEOPLE BY MONTH</h3>
+                @foreach ($contactedPeople as $month => $people)
+                    <h4 style="color: white;">{{ Carbon\Carbon::parse($month . '-01')->format('F Y') }}</h4>
+                    <table class="table table-striped table-dark">
+                        <thead>
+                            <tr class="head1">
+                                <th scope="col"></th>
+                                <th scope="col">FULL NAME</th>
+                                <th scope="col">CONTACTED DATE</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($people as $index => $person)
+                                <tr class="head2">
+                                    <td>{{ $index + 1 }}</td>
+                                    <td>{{ $person->full_name }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($person->created_at)->format('d-m-Y') }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                @endforeach
+            </section>
+
+            <section class="student-appointments">
+                <h3 style="color: white;">STUDENT APPOINTMENTS BY MONTH</h3>
+                @foreach ($appointments as $month => $students)
+                    <h4 style="color: white;">{{ $month }}</h4>
+                    <table class="table table-striped table-dark">
+                        <thead>
+                            <tr class="head">
+                                <th scope="col" ></th>
+                                <th scope="col" >FULL NAME</th>
+                                <th scope="col">APPOINTMENT DATE</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($students as $index => $student)
+                                <tr class="head3">
+                                    <td>{{ $index + 1 }}</td>
+                                    <td>{{ $student->full_name }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($student->appointment_date)->format('d-m-Y') }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                @endforeach
+            </section>
+            
+            
+            
+            
         </div>
     </div>
 
@@ -244,6 +366,114 @@
 });
 
 </script>
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const barCtx = document.getElementById('monthlyBarChart').getContext('2d');
+
+        // Monthly registrations data passed from backend
+        const monthlyRegistrations = @json($monthlyRegistrations);
+
+        // Extract months and totals from the backend data
+        const months = monthlyRegistrations.map(data => data.month); // Extract month names
+        const totals = monthlyRegistrations.map(data => data.total); // Extract student counts
+
+        // 12 vibrant and contrasting colors to match dark blue background
+        const barColors = [
+            '#FF6347', // Tomato Red
+            '#FFD700', // Gold
+            '#90EE90', // Light Green
+            '#FF1493', // Deep Pink
+            '#00CED1', // Dark Turquoise
+            '#FF4500', // Orange Red
+            '#98FB98', // Pale Green
+            '#32CD32', // Lime Green
+            '#00BFFF', // Deep Sky Blue
+            '#FF8C00', // Dark Orange
+            '#DA70D6', // Orchid
+            '#87CEFA'  // Light Sky Blue
+        ];
+
+        const barData = {
+            labels: months, // X-axis labels (Months)
+            datasets: [{
+                label: 'TOTAL REGISTERED STUDENTS',
+                data: totals, // Y-axis data (Counts)
+                backgroundColor: barColors, // Apply the new color palette for bars
+            }]
+        };
+
+        const barConfig = {
+            type: 'bar',
+            data: barData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                scales: {
+                    x: {
+                        ticks: {
+                            color: 'white', // Set X-axis labels color to white
+                            font: {
+                                size: 16, // Set the font size for X-axis labels
+                            },
+                        },
+                        grid: {
+                            color: '#FFFFFF99', // Lighter grid line color for better contrast
+                        }
+                    },
+                    y: {
+                        beginAtZero: true, // Start Y-axis at 0
+                        ticks: {
+                            color: 'white', // Set Y-axis labels color to white
+                            stepSize: 10, // Adjust step size based on data
+                            callback: function (value) {
+                                return value; // Return raw value for Y-axis ticks
+                            }
+                        },
+                        grid: {
+                            color: '#FFFFFF99', // Lighter grid line color for better contrast
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: true, // Show legend
+                        labels: {
+                            color: 'white' // Set legend labels color to white
+                        }
+                    },
+                    title: {
+                        display: true, // Display chart title
+                        text: 'TOTAL REGISTERED STUDENTS BY MONTH',
+                        color: 'white', // Set title color to white
+                        font: {
+                            size: 20 // Set title font size
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function (context) {
+                                return `${context.raw} students`; // Tooltip shows total students
+                            }
+                        },
+                        backgroundColor: '#000000', // Dark background for tooltips for better contrast
+                        titleColor: 'white', // Title color for tooltips
+                        bodyColor: 'white', // Body color for tooltips
+                    }
+                }
+            }
+        };
+
+        // Render the bar chart
+        new Chart(barCtx, barConfig);
+    });
+</script>
+
+
+
+
 
 </body>
 </html>

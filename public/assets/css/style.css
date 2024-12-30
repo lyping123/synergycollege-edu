@@ -2247,29 +2247,41 @@ header{
 }
 
 
+
+
 .animated-img {
-  transition: transform 0.3s ease-in-out;
-  cursor: pointer; /* Indicate clickability */
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out; 
 }
 
-.animated-img.enlarged {
-  transform: scale(1.5); /* Adjust the enlargement factor */
-  z-index: 10; /* Ensure the image appears on top of others */
-  position: relative; /* Helps with stacking if necessary */
+.animated-img:hover {
+  transform: scale(1.15); 
+}
+
+
+.animated {
+  cursor: pointer; 
+  transition: transform 0.3s ease-in-out; 
+}
+
+.animated:hover {
+  transform: scale(2.3); 
+}
+
+
+.modal-dialog {
+  max-width: 100%; 
+  margin: 0;
+}
+
+.modal-body {
+  padding: 0; 
 }
 
 #modal {
-  transition: transform 0.3s ease;
-}
-
-#modal:hover {
-  transform: scale(2.5); /* Increases size by 1.5x */
-  cursor: zoom-in;      /* Indicates zoom action */
-}
-
-.modal img {
-  max-width: 90%;
-  max-height: 80%;
-  margin: 20px auto; /* Add margin to the top to push the image down */
-  display: block;
+  width: 100%; 
+  height: auto; 
+  max-height: 90vh; 
+  object-fit: contain; 
+  border-radius: 5px; 
 }

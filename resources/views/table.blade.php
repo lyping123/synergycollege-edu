@@ -28,13 +28,13 @@
 }
 
 .sidebar {
-    width: 250px;
+    width: 110px;
     background: white;
     color: black;
     padding-left: 30px;
     padding-right: 30px;
-    padding-top: 30px;
-    height: 150vh;
+    padding-top: 29.5px;
+    height: 250vh;
 }
 
 .sidebar h2 {
@@ -212,8 +212,49 @@ h3{
     height: 80px;
 }
 
+.pagination-container {
+        text-align: center; /* Centers the pagination */
+        margin-top: 20px; /* Adds spacing above the pagination */
+        margin-right: 1800px;
+    }
 
+    .pagination {
+        display: inline-flex; /* Ensures the list items are displayed horizontally */
+        padding: 0;
+        margin: 0;
+        list-style: none; /* Removes bullets from list items */
+    }
 
+    .pagination .page-item {
+        margin-right: 8px; /* Adds spacing between pagination items */
+    }
+
+    .pagination .page-link {
+        padding: 6px 12px; /* Adjusts the size of the buttons */
+        background-color: #f5f5f5; /* Light grey background */
+        border: 1px solid #ccc; /* Border color */
+        border-radius: 4px; /* Rounded corners */
+        text-decoration: none; /* Removes underline */
+        color: #333; /* Text color */
+        font-size: 14px; /* Button text size */
+        display: inline-block; /* Ensures the link behaves like a button */
+    }
+
+    .pagination .page-item.active .page-link {
+        background-color: #007bff; /* Active state background color */
+        color: white; /* Active state text color */
+        border-color: #007bff; /* Active state border color */
+    }
+
+    .pagination .page-link:hover {
+        background-color: #0056b3; /* Hover state background color */
+        color: white; /* Hover state text color */
+        border-color: #0056b3; /* Hover state border color */
+    }
+
+    .pagination .page-item:last-child {
+        margin-right: 0; /* Removes the extra margin for the last item */
+    }
 </style>
 <body>
 
@@ -232,8 +273,11 @@ h3{
                 <li><a href="/students" <?php echo $_SERVER['REQUEST_URI'] == '/students' ? 'style="color:#ea2328;"' : ''; ?>>STUDENT LISTS</a></li>
                
                 <li><a href="/notice" <?php echo $_SERVER['REQUEST_URI'] == '/notice' ? 'style="color:#ea2328;"' : ''; ?>>NOTIFICATION</a></li>
+                <li><a href="/appointment" <?php echo $_SERVER['REQUEST_URI'] == '/appointment' ? 'style="color:#ea2328;"' : ''; ?>>APPOINTMENT VERIFY</a></li>
+                <li><a href="/image" <?php echo $_SERVER['REQUEST_URI'] == '/image' ? 'style="color:#ea2328;"' : ''; ?>>UPDATE IMAGE</a></li>
+                <li><a href="/update_new" <?php echo $_SERVER['REQUEST_URI'] == '/update_new' ? 'style="color:#ea2328;"' : ''; ?>>UPDATE CONTACT</a></li>
                 
-                
+            </ul>
             </ul>
 
             <form action="{{ route('logout') }}" method="POST" style="display: inline;">
@@ -286,6 +330,31 @@ h3{
 
                 <input type="text" id="searchBar" placeholder="Search students name..." onkeyup="searchStudents()" style="background-color: white;padding:10px;width:300px;">
 
+
+                
+                
+                
+
+                <select id="monthFilter" onchange="filterByMonth()" style="background-color: white; padding: 10px; width: 200px;">
+                    <option value="">Filter by Month...</option>
+                    <option value="01">January</option>
+                    <option value="02">February</option>
+                    <option value="03">March</option>
+                    <option value="04">April</option>
+                    <option value="05">May</option>
+                    <option value="06">June</option>
+                    <option value="07">July</option>
+                    <option value="08">August</option>
+                    <option value="09">September</option>
+                    <option value="10">October</option>
+                    <option value="11">November</option>
+                    <option value="12">December</option>
+                </select>
+                
+
+                
+               
+                
                 <table id="studentTable">
                     <thead>
                         <tr>
@@ -311,7 +380,8 @@ h3{
                     </thead>
                     <tbody>
                         @foreach ($students as $student)
-                            <tr data-student-id="{{ $student->id }}">
+                            {{-- <tr data-student-id="{{ $student->id }}"> --}}
+                            <tr data-student-id="{{ $student->id }}" data-created-at="{{ \Carbon\Carbon::parse($student->created_at)->format('m') }}">
                                 <td>{{$student->full_name}}</td>
                                 <td>{{$student->ic_no}}</td>
                                 <td>{{$student->nationality}}</td>
@@ -349,7 +419,12 @@ h3{
                 </table>
             </section>
 
-
+            <div class="pagination-container">
+                <ul class="pagination">
+                    {{ $students->links('pagination::bootstrap-4') }}
+                </ul>
+            </div>
+            
             <section class="student-info">
                 <h3>STUDENT IMPORTANT DETAILS</h3>
                 <div id="studentDetails" style="background-color: white; padding: 25px; border-radius: 5px; display: none;color:black;">
@@ -664,6 +739,32 @@ renderTable();
 }
 
 </script>
+
+<script>
+    function filterByMonth() {
+    const selectedMonth = document.getElementById('monthFilter').value; // Get selected month
+    const searchTerm = document.getElementById('searchBar').value.toLowerCase(); // Get search term
+    const rows = document.querySelectorAll('#studentTable tbody tr');
+
+    rows.forEach(row => {
+        const createdAt = row.getAttribute('data-created-at'); // Get the month from data attribute
+        const fullName = row.querySelector('td').textContent.toLowerCase(); // Get full name (first cell)
+        const matchesSearch = fullName.includes(searchTerm); // Check if row matches search term
+        const matchesMonth = selectedMonth === '' || createdAt === selectedMonth; // Check if row matches selected month
+
+        // Show or hide row based on both search term and selected month
+        if (matchesSearch && matchesMonth) {
+            row.style.display = ''; // Show row if it matches both
+        } else {
+            row.style.display = 'none'; // Hide row if it doesn't match
+        }
+    });
+}
+
+</script>
+
+
+
 
 
 {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

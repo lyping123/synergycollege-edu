@@ -33,10 +33,16 @@
     margin-bottom: 20px;
     overflow: hidden;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 .image-container img {
     transition: transform 0.3s ease;
+}
+
+
+.image-container :hover {
+  transform: scale(1.5);
 }
 
 

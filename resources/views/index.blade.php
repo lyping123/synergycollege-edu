@@ -405,46 +405,37 @@
 
     <div class="container mt-4">
       <div class="row">
-          <div class="col-md-3">
-              <img src="assets/images/Untitled-2.jpg" class="img-fluid animated-img" alt="Image 1"
-                   style="border: 3px solid white; border-radius: 5px;"
-                   data-toggle="modal" data-target="#imageModal" data-image="assets/images/Untitled-2.jpg">
-          </div>
-          <div class="col-md-3">
-              <img src="assets/images/dancer_5.jpeg" class="img-fluid animated-img" alt="Image 2"
-                   style="border: 3px solid white; border-radius: 5px;"
-                   data-toggle="modal" data-target="#imageModal" data-image="assets/images/dancer_5.jpeg">
-          </div>
-          <div class="col-md-3">
-              <img src="assets/images/dancer_9.jpeg" class="img-fluid animated-img" alt="Image 3"
-                   style="border: 3px solid white; border-radius: 5px;"
-                   data-toggle="modal" data-target="#imageModal" data-image="assets/images/dancer_9.jpeg">
-          </div>
-          <div class="col-md-3">
-            <img src="assets/images/dancer_7.jpeg" class="img-fluid animated-img" alt="Image 4"
+        @foreach($images as $image)
+        <div class="col-md-3">
+            <img src="{{ asset('assets/images/'.$image->image_url) }}" class="img-fluid animated-img" alt="{{ $image->image_name }}"
                  style="border: 3px solid white; border-radius: 5px;"
-                 data-toggle="modal" data-target="#imageModal" data-image="assets/images/dancer_7.jpeg">
+                 data-toggle="modal" data-target="#imageModal" data-image="{{ asset($image->image_url) }}">
         </div>
-    </div>
-</div>
-
-
-
-<div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-      <div class="modal-content">
-          <div class="modal-header">
-              <h5 class="modal-title" id="imageModalLabel">Image Preview</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-              </button>
-          </div>
-          <div class="modal-body">
-              <img id="modal" src="" class="img-fluid" alt="Modal Image" style="border-radius: 5px;">
+    @endforeach
+    
+      </div>
+  </div>
+  
+  <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="imageModalLabel">Image Preview</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                @foreach($images as $image)
+                    <img src="{{ asset('assets/images/'.$image->image_url) }}" class="img-fluid animated" alt="{{ $image->image_name }}"
+                    style="border: 3px solid white; border-radius: 5px;"
+                    data-toggle="modal" data-target="#imageModal" data-image="{{ asset($image->image_url) }}" >
+                 @endforeach
+              </div>
           </div>
       </div>
   </div>
-</div>
+  
 
 
   </div>
@@ -558,7 +549,7 @@
         <div class="col-6 col-md-4 col-lg-3">
           <div class="item first-item">
             <img src="assets/images/award.png" alt="" style="width: 100px;">
-            <h4 style="font-size: 15px; margin-top:15px;font-weight:600;">MULTIPLE QUALIFICATIOBS IN ONE PROGRAM</h4>
+            <h4 style="font-size: 15px; margin-top:15px;font-weight:600;">MULTIPLE QUALIFICATIONS IN ONE PROGRAM</h4>
           </div>
         </div>
 

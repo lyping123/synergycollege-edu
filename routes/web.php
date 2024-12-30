@@ -71,7 +71,7 @@ Route::get('/directory',[SynergyController::class,'directory']);
 Route::get('/contact',[SynergyController::class,'contact']);
 
 //dashboard
-Route::get('/dashboard',[SynergyController::class,'dashboard'])->name('dashboard');
+Route::get('/dashboard',[SynergyController::class,'dashboard'])->name('dashboard')->middleware('auth');
 
 
 
@@ -80,7 +80,7 @@ Route::post('/update-status', [SynergyController::class, 'updateStatus'])->name(
 
 
 //notice
-Route::get('/notice', [SynergyController::class, 'showCalendar'])->name('showCalendar');
+Route::get('/notice', [SynergyController::class, 'showCalendar'])->name('showCalendar')->middleware('auth');
 
 
 Route::post('/students/updateDate', [SynergyController::class, 'getStudentsForCalendar'])->name('students.updateDate');
@@ -107,18 +107,34 @@ Route::get('/send-email-to-guardian/{id}', [SynergyController::class, 'emailGuar
 
 
 
+Route::get('/images', [SynergyController::class, 'showImages'])->name('images.show');
 
 
 
 
+//image
+Route::get('/image', [SynergyController::class, 'image'])->name('image')->middleware('auth');
 
 
+Route::post('/image/update/{id}', [SynergyController::class, 'updateImage'])->name('updateImage')->middleware('auth');
 
 
+//update contact
+Route::get('/update_new', [SynergyController::class, 'update_new'])->name('update_new')->middleware('auth');
 
 
+Route::post('/update_contact/{id}', [SynergyController::class, 'updateContact'])->name('update_contact');
 
 
+//appointment
+Route::get('/appointment', [SynergyController::class, 'appointment'])->name('appointment')->middleware('auth');
+Route::post('/send-reminder', [SynergyController::class, 'sendReminder'])->name('send.reminder');
+
+Route::post('/verify-code', [SynergyController::class, 'verifyCode'])->name('verifyCode');
+
+Route::get('/get-student-details', [SynergyController::class, 'getStudentDetails'])->name('getStudentDetails');
+
+// Route::get('/students', [SynergyController::class, 'form'])->name('students.list');
 
 
 

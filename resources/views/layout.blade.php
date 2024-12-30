@@ -105,19 +105,19 @@
 
 
 <script>
-  // Ensure this script runs after the DOM is loaded
   document.addEventListener('DOMContentLoaded', function() {
       const images = document.querySelectorAll('.animated-img');
-      const modal = document.getElementById('modal');
+      const modalImg = document.getElementById('modal');  
 
       images.forEach(img => {
           img.addEventListener('click', function() {
-              const imgSrc = this.getAttribute('data-image');
-              modal.src = imgSrc;
+              const imgSrc = this.getAttribute('data-image');  
+              modalImg.src = imgSrc;  
           });
       });
   });
 </script>
+
 
 <script>
 document.getElementById('scrollLink').click();

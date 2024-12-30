@@ -73,12 +73,29 @@
         h2{
             font-size: 25px;
         }
+
+        .logo img {
+            height: 80px;
+        }
+        .btn{
+            background-color: #14143e;
+            color: #faea18;
+            border: none;
+        }
+        .btn:hover{
+            background-color: #ea2328;
+            color: white;
+        }
     </style>
 </head>
 <body>
     <!-- Login Form Section -->
     <div class="login-section">
         <div class="login-form">
+            <div class="logo">
+                <img src="assets/images/school3.png" alt="Logo">
+            </div>
+            <br>
             <h2>WELCOME TO SYNERGY COLLEGE PORTAL.</h2>
             <p>This portal is accessible only to admins. Please log in below.</p>
 
@@ -108,15 +125,15 @@
                     <input type="password" class="form-control" id="password" name="password" required>
                 </div>
 
-                <div class="form-check mb-3">
+                {{-- <div class="form-check mb-3">
                     <input type="checkbox" class="form-check-input" id="remember" name="remember">
                     <label class="form-check-label" for="remember">Remember me</label>
-                </div>
+                </div> --}}
 
-                <button type="submit" class="btn btn-primary btn-block">Log In</button>
+                <button type="submit" class="btn btn-primary btn-block">LOG IN</button>
 
                 <div class="text-center mt-3">
-                    <a href="#" class="text-muted">Forgot Password?</a>
+                    {{-- <a href="#" class="text-muted">Forgot Password?</a> --}}
                 </div>
             </form>
         </div>

@@ -120,6 +120,7 @@
             border-radius: 5px;
             font-weight: 700;
             font-size: 15px;
+            color: black;
         }
 
         .submit:hover {
@@ -215,7 +216,93 @@ h1{
     background-color: black;
 }
 
+/* Table Styles */
+table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 16px;
+        text-align: left;
+        background-color: #222;
+        border-radius: 10px;
+        overflow: hidden;
+    }
 
+    th, td {
+        padding: 12px 15px;
+    }
+
+    thead {
+        background-color: #ea2328;
+        color: white;
+    }
+
+    tbody tr:nth-child(even) {
+        background-color: #333;
+    }
+
+    tbody tr:nth-child(odd) {
+        background-color: #444;
+    }
+
+    tbody tr:hover {
+        background-color: #555;
+        cursor: pointer;
+    }
+
+    th {
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-size: 14px;
+        border-bottom: 2px solid #18153d;
+    }
+
+    td {
+        color: #ddd;
+    }
+
+    img {
+        border-radius: 5px;
+        max-width: 100px;
+        cursor: pointer;
+    }
+
+    form button {
+        background-color: #ea2328;
+        border: none;
+        padding: 10px 15px;
+        color: white;
+        font-weight: bold;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    form button:hover {
+        background-color: #ff5722;
+        color: black;
+    }
+
+    form input[type="file"] {
+        background-color: #333;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+
+    form input[type="file"]::-webkit-file-upload-button {
+        background-color: #ea2328;
+        border: none;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    form input[type="file"]::-webkit-file-upload-button:hover {
+        background-color: #ff5722;
+    }
     </style>
 </head>
 
@@ -232,7 +319,7 @@ h1{
                 <li><a href="/appointment" <?php echo $_SERVER['REQUEST_URI'] == '/appointment' ? 'style="color:#ea2328;"' : ''; ?>>APPOINTMENT VERIFY</a></li>
                 <li><a href="/image" <?php echo $_SERVER['REQUEST_URI'] == '/image' ? 'style="color:#ea2328;"' : ''; ?>>UPDATE IMAGE</a></li>
                 <li><a href="/update_new" <?php echo $_SERVER['REQUEST_URI'] == '/update_new' ? 'style="color:#ea2328;"' : ''; ?>>UPDATE CONTACT</a></li>
-                
+               
             </ul>
             </ul>
 
@@ -247,69 +334,43 @@ h1{
                 <div class="logo">
                     <a href="/dashboard"><img src="assets/images/school3.png" alt="Logo"></a>
                 </div>
-                <h1>STUDENT REGISTRATION CALENDAR</h1>
+                <h1>CLICK TO UPDATE NEWEST IMAGE</h1>
             </header>
 
-            @if(session('success'))
-                <div class="alert alert-success">{{ session('success') }}</div>
-            @endif
-
+           
             <br><br>
-
-            <div class="month-navigation">
-                <a href="{{ route('showCalendar', ['month' => \Carbon\Carbon::parse($currentMonth)->subMonth()->format('Y-m')]) }}" style="text-decoration: none;" class="next">PREVIOUS</a>
-                <span style="font-size: 25px;">{{ strtoupper(\Carbon\Carbon::parse($currentMonth)->format('F Y')) }}</span>
-                <a href="{{ route('showCalendar', ['month' => \Carbon\Carbon::parse($currentMonth)->addMonth()->format('Y-m')]) }}" style="text-decoration: none;" class="next">NEXT</a>
-            </div>
-
-            <div class="calendar">
-                @for ($i = 1; $i <= \Carbon\Carbon::parse($currentMonth)->daysInMonth; $i++)
-                    @php
-                        $currentDay = \Carbon\Carbon::parse($currentMonth)->startOfMonth()->addDays($i - 1);
-                        $date = $currentDay->toDateString();
-                        $studentsForDate = $groupedStudents[$date] ?? [];
-                    @endphp
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Image Name</th>
+                        <th>Image</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($images as $image)
+                    <tr>
+                        <td>{{ $image->id }}</td>
+                        <td>{{ $image->image_name }}</td>
+                        <td>
+                            <a href="{{ asset('assets/images/' . $image->image_url) }}" target="_blank">
+                            <img src="{{ asset('assets/images/' . $image->image_url) }}" alt="{{ $image->image_name }}" style="width: 100px;">
+                            </a>
+                        </td>
+                        <td>
+                            <form action="{{ route('updateImage', $image->id) }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <input type="file" name="image" required>
+                                <button type="submit">Update</button>
+                            </form>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
             
-                    <div class="day">
-                        <h4>{{ $currentDay->format('D, d M') }}</h4>
-            
-                        <div class="student-list">
-                            @if ($studentsForDate && $studentsForDate->isNotEmpty())
-                                @foreach ($studentsForDate as $student)
-                                    <p style="color: yellow;font-size:18px;">{{ $student->full_name }}</p>
-                            <br>
-                                    @if($student->appointment_date)
-                                        <p style="font-size:15px;"><strong>APPOINTMENT DATE:</strong><br> {{ \Carbon\Carbon::parse($student->appointment_date)->format('D, d M Y') }}</p>
-                                        
-                                        <form action="{{ route('deleteAppointment', $student->id) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="de" >DELETE APPOINTMENT</button>
-                                        </form>
-                                        
-                                    @else
-                                        <p>No appointment set</p>
-                                    @endif
-            
-                                    <br>
-            
-                                    <!-- Appointment Assignment Form -->
-                                    <form action="{{ route('assignAppointment', $student->id) }}" method="POST">
-                                        @csrf
-                                        <label for="appointment_date">SELECT DATE:</label>
-                                        <input type="date" name="appointment_date" id="appointment_date" value="{{ old('appointment_date', $date) }}"/>
-            
-                                        <button type="submit" class="submit">ASSIGN APPOINTMRNT</button>
-                                    </form>
-            
-                                    <br>
-                                @endforeach
-                            @else
-                                <p class="empty">No students</p>
-                            @endif
-                        </div>
-                    </div>
-                @endfor
+           
             </div>
             
 </body>
