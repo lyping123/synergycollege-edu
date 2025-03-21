@@ -1,6 +1,38 @@
 @extends('layout')
 
 @section('content')
+<style>
+.right-image img {
+    max-width: 100%;
+    height: auto;
+    display: block; 
+    margin-bottom: 20px;
+}
+.item .thumb img{
+  height: 300px
+}
+
+
+.item .hover-effect{
+  background-color: transparent !important;
+}
+/* Responsive Design for Small Screens */
+@media (max-width: 576px) {
+    .inner-content {
+        margin-left: 50px; /* Reduce padding */
+        padding: 5px;
+        z-index: 1000;
+    }
+
+    .inner-content h4 {
+        font-size: 16px; /* Smaller title */
+    }
+
+    .inner-content span {
+        font-size: 12px; /* Adjust text size */
+    }
+}
+</style>
 
 <div class="main-banner" id="top">
     <div class="container">
@@ -65,19 +97,20 @@
   <div id="about" class="about-us section">
     <div class="container">
       <div class="row">
-        <div class="col-lg-6 align-self-center">
+        <div class="col-lg-6 align-self-center col-sm-12">
           <div class="right-image">
-            <img src="assets/images/section2.jpg" alt="" class="main-image" style="margin-bottom: 80px;padding-right:30px;">
-            <img src="assets/images/section2a.jpg" alt="" class="hover-image" style="padding-right:30px;">
+            <img src="assets/images/section2.jpg" alt="" style="display: block;" class="main-image" style="margin-bottom: 80px;padding-right:30px;">
+            <img src="assets/images/section2a.jpg" alt="" style="display: block;" style="padding-right:30px;">
           </div>
+          
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-6 col-sm-12">
           <div class="section-heading">
             <h2>" <span style="color:#ea2328">ABOUT US</span> "</h2>
             <p>At Synergy College, we believe in creating a collaborative environment that nurtures creativity, fosters personal growth, and equips students with the skills they need to thrive in a dynamic world. Our diverse programs are designed to blend theoretical knowledge with practical experience, ensuring our graduates are well-prepared for their future careers. Join us on a journey of discovery and empowerment, where your aspirations become reality.
             </p>
             <div class="row">
-              <div class="col-lg-4">
+              <div class="col-lg-4 col-sm-12">
                 <div class="fact-item">
                   <div class="count-area-content">
                     <div class="icon">
@@ -95,7 +128,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-lg-4">
+              <div class="col-lg-4 col-sm-12">
                 <div class="fact-item">
                   <div class="count-area-content">
                     <div class="icon">
@@ -107,7 +140,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-lg-4">
+              <div class="col-lg-4 col-sm-12">
                 <div class="fact-item">
                   <div class="count-area-content">
                     <div class="icon">
@@ -120,10 +153,6 @@
                     <div class="main-blue-button-hover">
                       <a href="/contact" class="learn">LEARN MORE</a>
                   </div>
-                  
-                  
-
-
                   </div>
                 </div>
               </div>
@@ -144,7 +173,7 @@
       <div class="row">
         <div class="col-lg-6 offset-lg-3">
           <div class="section-heading">
-            <h2>OUR COURSES</h2>
+            <h2>NEWS AND EVENTS</h2>
           </div>
         </div>
       </div>
@@ -155,70 +184,56 @@
           <div class="owl-carousel owl-portfolio">
             <div class="item">
               <div class="thumb">
-                <img src="assets/images/account.jpg" alt="">
-                <div class="hover-effect">
-                  <div class="inner-content">
-                    <a rel="sponsored" href="https://templatemo.com/tm-564-plot-listing" target="_parent"><h4>ACCOUNTING</h4></a>
-                    <span>The Accounting program at Synergy College teaches essential financial skills and prepares students for careers in accounting through hands-on experience and expert guidance.</span>
+                <img src="assets/images/rumah kasih sayang.jpg" alt="">
+                <div class="hover-effect" >
+                   <div class="inner-content">
+                    <a href="#"><h4>CHARITY FOR ORPHANS EVENTS</h4></a>
+                    <span><strong>📅 Date:</strong> 02 FEBRUARY 2025</span><br>
+                    <span><strong>🕒 Time:</strong> 1:00 PM - 4:00 PM</span><br>
+                    <span><strong>📍 Location:</strong> BUKIT MERTAJAM</span>
                   </div>
                 </div>
               </div>
             </div>
             <div class="item">
               <div class="thumb">
-                <img src="assets/images/graphic1.jpg" alt="">
+                <img src="assets/images/bownling.jpg" alt="">
                 <div class="hover-effect">
                   <div class="inner-content">
-                    <a href="#"><h4>GRAPHIC MULTIMEDIA</h4></a>
-                    <span>The Graphic Multimedia program at Synergy College teaches creative skills in graphic design and digital media production for various platforms.</span>
+                    <a href="#"><h4>BOWLING TOURNAMENT</h4></a>
+                    <span><strong>📅 Date:</strong> 16 JANUARY 2025</span><br>
+                    <span><strong>🕒 Time:</strong> 10:00 AM - 2:00 PM</span><br>
+                    <span><strong>📍 Location:</strong>Mega Lanes Bowling Centreg</span>
+                  </div> 
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="thumb">
+                <img src="assets/images/convecation.jpg" alt="">
+                <div class="hover-effect">
+                 <div class="inner-content">
+                    <a href="#"><h4>CONVOCATION 2024</h4></a>
+                    <span><strong>📅 Date:</strong> 20 DECEMBER 2024</span><br>
+                    <span><strong>🕒 Time:</strong> 9:00 AM - 12:00 PM</span><br>
+                    <span><strong>📍 Location:</strong> Sunway Sports Center</span>
                   </div>
                 </div>
               </div>
             </div>
             <div class="item">
               <div class="thumb">
-                <img src="assets/images/elec.jpg" alt="">
+                <img src="assets/images/badminton.jpg" alt="">
                 <div class="hover-effect">
                   <div class="inner-content">
-                    <a rel="sponsored" href="https://templatemo.com/tm-562-space-dynamic" target="_parent"><h4>ELECTRONIC & ENGINEERING</h4></a>
-                    <span>We maintain a detailed catalog of all school equipment, making it easy to track, manage, and update the status of various assets.</span>
+                    <a href="#"><h4>BADMINTON TOURNAMENT</h4></a>
+                    <span><strong>📅 Date:</strong> 08 DECEMBER 2023</span><br>
+                    <span><strong>🕒 Time:</strong> 8:00 AM - 5:00 PM</span><br>
+                    <span><strong>📍 Location:</strong> Sunway Sports Center</span>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="item">
-              <div class="thumb">
-                <img src="assets/images/program.jpg" alt="">
-                <div class="hover-effect">
-                  <div class="inner-content">
-                    <a href="#"><h4>PROGRAMMING & APPLICATION DEVELOPMENT</h4></a>
-                    <span>We maintain a detailed catalog of all school equipment, making it easy to track, manage, and update the status of various assets.</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="thumb">
-                <img src="assets/images/computer.jpg" alt="">
-                <div class="hover-effect">
-                  <div class="inner-content">
-                    <a href="#"><h4>COMPUTER NETWORKING</h4></a>
-                    <span>The Computer Networking program at Synergy College provides essential skills in network design, management, and security, preparing students for careers in IT and networking.</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {{-- <div class="item">
-              <div class="thumb">
-                <img src="assets/images/portfolio-02.jpg" alt="">
-                <div class="hover-effect">
-                  <div class="inner-content">
-                    <a href="#"><h4>Sixth Project</h4></a>
-                    <span>SEO &amp; Marketing</span>
-                  </div>
-                </div>
-              </div>
-            </div> --}}
             {{-- <div class="item">
               <div class="thumb">
                 <img src="assets/images/portfolio-03.jpg" alt="">
@@ -309,9 +324,9 @@
         {{-- <img src="assets/images/services-left-dec.png" alt=""> --}}
       </div>
       <div class="row">
-        <div class="col-lg-8 offset-lg-2">
+        <div class="col-lg-8 offset-lg-2 col-sm-12">
           <div class="section-heading">
-            <h2 style="color: white">ABOUT SYNERGY COLLEGE</h2>
+            <h2 style="color: white">SYNERGY COLLEGE HISTORY</h2>
 
             <p style="color: #9b9bad; margin-top:50px; ">
                 Established in 2001, Synergy College is a significant contributor to the field of professional and skill education in Malaysia.
@@ -524,40 +539,35 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-6 col-md-4 col-lg-3">
+        <div class=" col-md-4 col-lg-3 col-sm-12">
           <div class="item first-item">
             <img src="assets/images/school.png" alt="" style="width: 100px;">
-            
-              <h4 style="font-size: 15px; margin-top:15px;font-weight:600;">HIGHER VOCATIONAL EDUCATION PROVIDER</h4>
-            
+            <h4>HIGHER VOCATIONAL EDUCATION PROVIDER</h4>
           </div>
         </div>
-        <div class="col-6 col-md-4 col-lg-3">
+    
+        <div class=" col-md-4 col-lg-3 col-sm-12">
           <div class="item first-item">
             <img src="assets/images/course.png" alt="" style="width: 100px;">
-            <h4 style="font-size: 15px; margin-top:15px;font-weight:600;">PROVIDE THOUSANDS HANDS-ON PRACTICAL LEARN ALL USEFUL THEORY THROUGH PRACTICAL</h4>
+            <h4>PROVIDE THOUSANDS HANDS-ON PRACTICAL LEARN ALL USEFUL THEORY THROUGH PRACTICAL</h4>
           </div>
         </div>
-
-        <div class="col-6 col-md-4 col-lg-3">
+    
+        <div class=" col-md-4 col-lg-3 col-sm-12">
           <div class="item first-item">
             <img src="assets/images/internship.png" alt="" style="width: 100px;">
-            <h4 style="font-size: 15px; margin-top:15px;font-weight:600;">INDUSTRIAL PLACEMENT/ INTERNSHIP/ INDUSTRIAL TRAINING</h4>
+            <h4>INDUSTRIAL PLACEMENT/ INTERNSHIP/ INDUSTRIAL TRAINING</h4>
           </div>
         </div>
-
-        <div class="col-6 col-md-4 col-lg-3">
+    
+        <div class="col-md-4 col-lg-3 col-sm-12">
           <div class="item first-item">
             <img src="assets/images/award.png" alt="" style="width: 100px;">
-            <h4 style="font-size: 15px; margin-top:15px;font-weight:600;">MULTIPLE QUALIFICATIONS IN ONE PROGRAM</h4>
+            <h4>MULTIPLE QUALIFICATIONS IN ONE PROGRAM</h4>
           </div>
         </div>
-
-
-        
-
-
-      </div>
+    </div>
+    
     </div>
   </div>
 

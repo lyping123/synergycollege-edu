@@ -258,7 +258,7 @@
         <h3 style="color: white; font-weight: 700;">CONGRATULATIONS TO ALL OF OUR GRADUATES!</h3>
 
         <br>
-        <h4 style="color: white; font-weight: 600;padding-bottom:50px;">SYNERGY COLLEGE CONVOCATION 2016 GROUP PHOTO</h4>
+        <h4 style="color: white; font-weight: 600;padding-bottom:50px;">SYNERGY COLLEGE CONVOCATION 2024 GROUP PHOTO</h4>
       <div class="row">
         <!-- Program 1 -->
         <div class="col-md-4 mb-4">

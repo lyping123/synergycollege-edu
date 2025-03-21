@@ -96,7 +96,7 @@
         
         <!-- Header Section -->
         <div class="email-header">
-            <h1>APPOINTMENT CONFIRMATION</h1>
+            <h1>REGISTRATION APPOINTMENT</h1>
         </div>
 
         <!-- Body Section -->
