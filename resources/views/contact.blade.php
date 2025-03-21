@@ -174,7 +174,7 @@ h4{
            <div class="col-lg-4 col-md-6 mb-4 d-flex">
               <div class="contact-card flex-fill">
                  <i class="fas fa-map-marker-alt"></i>
-                 <h4>HEAD OFFICE</h4>
+                 <h4>OFFICE</h4>
                  <a href="https://www.google.com/maps/search/?api=1&query=32+%26+34+Jalan+Perai+Jaya+4+Bandar+Perai+Jaya+13600+Perai+Pulau+Pinang+Malaysia" target="_blank" rel="noopener noreferrer">
                     32 & 34, Jalan Perai Jaya 4, Bandar Perai Jaya, 13600 Perai, Pulau Pinang, Malaysia
                  </a>
@@ -206,13 +206,6 @@ h4{
      
  
   </div>
-
-
-
-
-
-
-
 
 @endsection
 

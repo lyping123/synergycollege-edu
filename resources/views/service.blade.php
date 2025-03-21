@@ -203,15 +203,15 @@
     <div class="container">
       <div class="row align-items-center">
         <div class="col-md-6">
-          <img src="assets/images/loan.jpg" alt="Financial Assistance" class="study-loan-img">
+          <img src="assets/images/studyloan.png" alt="Financial Assistance" class="study-loan-img">
         </div>
         <div class="col-md-6">
           <h3>STUDY LOAN</h3>
           <p><strong>SYNERGY COLLEGE FINANCIAL ASSISTANCE</strong></p>
-          <p>
+          <p align="justify">
             Our College Financial Assistance offers comprehensive financial aid services to students, such as study loans and scholarships. It has always been the intention of Synergy College to help our students in all aspects of their education.
           </p>
-          <p>
+          <p align="justify">
             Our Study Loan & Scholarship programs have been established in a variety of ways and for several different reasons.
           </p>
         </div>
@@ -260,6 +260,16 @@
         <br>
         <h4 style="color: white; font-weight: 600;padding-bottom:50px;">SYNERGY COLLEGE CONVOCATION 2024 GROUP PHOTO</h4>
       <div class="row">
+        <!-- Group -->
+        <div class="col-md-4 mb-4">
+          <div class="program-item">
+            <img src="assets/images/head.jpg" alt="Program 0" class="program-img">
+            <div class="program-caption">
+              <h3>GROUP PHOTO</h3>
+              
+            </div>
+          </div>
+        </div>
         <!-- Program 1 -->
         <div class="col-md-4 mb-4">
           <div class="program-item">

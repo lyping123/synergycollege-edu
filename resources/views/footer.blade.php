@@ -2,11 +2,11 @@
 
 
 <footer>
-  <div class="container">
+  <div class="container" >
     <div class="row">
       <!-- About Section -->
-      <div class="col-lg-3">
-        <div class="about footer-item">
+      <div class="col-lg-3" >
+        <div class="about footer-item" style="align-items: center; justify-content: center; display: flex; flex-wrap: wrap;">
           <div class="">
             <a href="/index"><img src="assets/images/school3.png" alt="Kolej Synergy Logo" style="width: 80px;"></a>
           </div>
@@ -15,7 +15,7 @@
             <li><a href="https://www.facebook.com/synergycollege.edu.my" target="_blank"><i class="fab fa-facebook"></i></a></li>
             {{-- <li><a href="https://synergycollege.edu.my/" target="_blank"><i class="fab fa-google"></i></a></li> --}}
             <li><a href="https://www.tiktok.com/@synergy.college" target="_blank"><i class="fab fa-tiktok"></i></a></li>
-            <li><a href="https://wa.me/60164456145" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
+            <li><a href="https://wa.me/60124081851?text=Hi%20Synergy%20College!%20I%20am%20interested%20in%20your%20services.%20Can%20I%20get%20in%20touch%20with%20you?" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
 
           </div>
           
@@ -45,7 +45,7 @@
 
           <p style="color: black;font-size:14px;font-family:arial;"><strong>PHONE NUMBER:</strong> <br><a href="https://wa.link/c90tw5" target="_blank">012-4081851</a></p>
           <br>
-          <p style="color: black;font-size:14px;font-family:arial;""><strong>TELEPHONE NUMBER:</strong> <br>04-3984787</p>
+          <p style="color: black;font-size:14px;font-family:arial;""><strong>OFFICE NUMBER:</strong> <br>04-3984787</p>
           <br>
           <p style="color: black;font-size:14px;font-family:arial;""><strong>EMAIL:</strong> <br><a href="mailto:support@synergycollege.edu.my" target="_blank">support@synergycollege.edu.my</a></p>
         </div>
@@ -62,8 +62,9 @@
         <p style="margin-top: 15px;fon-size:12px;font-weight:500;">
           <strong><span style="font-size: 18px;color:#1a173f;">ADDRESS</span></strong><br>
           <a href="https://maps.app.goo.gl/27EjUbo1hzZ9stCM7" target="_blank" style="font-size:14px;font-family:arial;"">
-          32 & 34, Jalan Perai Jaya 4, Bandar Perai Jaya,<br>
-          13600 Perai, Pulau Pinang, Malaysia.
+         32 & 34, Jalan Perai Jaya 4,<br> 
+         Bandar Perai Jaya, 13600 Perai,<br>
+         Pulau Pinang, Malaysia.
           </a>
         </p>
 
@@ -77,7 +78,7 @@
 
   <div class="">
     <div class="copyright">
-      <p>Copyright © 2024 Kolej Synergy. Designed by Programming ST4.</p>
+      <p>Copyright © 2025. Kolej Synergy (L02065), Synergy Central Academy Sdn Bhd (889213-K). All Rights Reserved.</p>
     </div>
   </div>
 </footer>

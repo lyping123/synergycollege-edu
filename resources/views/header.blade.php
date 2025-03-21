@@ -160,7 +160,7 @@ https://templatemo.com/tm-565-onix-digital
     
     <div class="header">
       <div class="logo">
-          <a href="/index"><img src="assets/images/school3.png" alt="Logo"></a>
+          <a href="/"><img src="assets/images/school3.png" alt="Logo"></a>
       </div>
         {{-- <nav class="navbar navbar-expand-lg navbar-light bg-faded ">
         
@@ -197,8 +197,8 @@ https://templatemo.com/tm-565-onix-digital
 
         <nav style="display: block">
             <ul id="nav-menu">
-                <li><a href="/index">Home</a></li>
-                <li><a href="/index#subscribe">Student Registration</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/#subscribe">Student Registration</a></li>
                 <li><a href="/testimonial">Testimonial</a></li>
                 <li><a href="/course">Courses</a></li>
                 <li><a href="/service">Our Services</a></li>

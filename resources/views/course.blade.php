@@ -8,99 +8,159 @@
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
-    padding: 236px 0px 130px 0px;
+    padding: 200px 0px 100px 0px;
     position: relative;
     overflow: hidden;
     background-attachment: fixed;
     background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('assets/images/head.jpg');
     width: 100%;
     height: 400px;
-  }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-  h2 {
+h2 {
     color: white;
     font-weight: 600;
-    font-size: 40px;
+    font-size: 35px;
     text-align: center;
-  }
+}
 
-  .course-gallery {
+/* Course Gallery */
+.course-gallery {
     display: flex;
-    width: 100vw;
-    height: 100%;
-    gap: 2px;
-  }
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    padding: 20px;
+}
 
-  .course-column {
+/* Individual Course Column */
+.course-column {
     position: relative;
-    width: 20vw;
-    height: 200vh;
+    width: 17%; /* Default size for larger screens */
+    max-width: 350px;
+    height: 450px;
     overflow: hidden;
     transition: all 0.3s ease;
     cursor: pointer;
-  }
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
 
-  .course-column img {
+.course-column img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s ease;
-  }
+}
 
-  .course-description {
+/* Course Description Overlay */
+.course-description {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.75);
     color: white;
     display: flex;
     flex-direction: column;
-    justify-content: left;
-    align-items: left;
+    justify-content: flex-start;
+    align-items: flex-start;
     opacity: 0;
-    transition: opacity 0.3s ease;
-    padding: 70px;
+    transition: opacity 0.3s ease-in-out;
+    padding: 20px;
     text-align: left;
-  }
+}
 
-  .course-column:hover {
-    width: 100vw;
-    z-index: 1;
-  }
-  
-  .course-column:hover img {
+.course-column p, .course-column h5{
+  display: none;
+}
+.course-column h4{
+    margin-top:100%;
+    width:100%;
+}
+
+.course-column:hover {
+    transform: scale(1.05);
+}
+
+.course-column:hover img {
     transform: scale(1.1);
-  }
+}
 
-  .course-column:hover .course-description {
+.course-column:hover .course-description {
     opacity: 1;
-  }
+}
 
-  .course-gallery:hover .course-column:not(:hover) {
-    opacity: 0.1;
-  }
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+    .course-column {
+        width: 30%;
+        height: 400px;
+    }
+}
 
-  /* Style for modal close button */
-  .modal-content {
+@media (max-width: 768px) {
+    .course-gallery {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .course-column {
+        width: 90%;
+        height: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .banner {
+        height: 300px;
+        padding: 150px 0;
+    }
+
+    h2 {
+        font-size: 28px;
+    }
+
+    .course-column {
+        width: 95%;
+        height: auto;
+    }
+
+    .course-description {
+        padding: 15px;
+    }
+}
+
+/* Modal Close Button */
+.modal-content {
     position: relative;
-  }
+    background: white;
+    
+    padding: 20px;
+    border-radius: 10px;
+}
+.modal-content p{
+  color: black !important;
+}
 
-  .modal .close {
+.modal .close {
     position: absolute;
     top: 10px;
     right: 10px;
     font-size: 2.5rem;
-    color: #fff;
+    color: black;
     background: transparent;
     border: none;
-  }
+    cursor: pointer;
+}
 
-  .modal .close:hover {
+.modal .close:hover {
     color: black;
-  }
-
+}
 </style>
 
 <div class="test-banner" id="top">
@@ -115,7 +175,7 @@
     <img src="assets/images/1.jpg" alt="Course 1">
     <div class="course-description">
       <h4>ACCOUNTING</h4>
-      <p style="color: white;">The Kolej Synergy Diploma in Accounting is a highly focused and depth professional training qualification designed to prepare students for careers in various concentrations within the specialization of Accounting.</p>
+      <p style="color: white;" align="justify">The Kolej Synergy Diploma in Accounting is a highly focused and depth professional training qualification designed to prepare students for careers in various concentrations within the specialization of Accounting.</p>
         <br>
       <h5>COURSE MODULES</h5>
     
@@ -126,19 +186,22 @@
         <br><br>
         <b> SEMESTER 2</b><br>
         ▷ AKS201 Cash and Bank Transactions<br>
-        ▷ AKS202 Property Plant and Equipment (PPE)<br>
+        ▷ AKS202 Property Plant and Equipment Register<br>
         ▷ AKS203 Month End Financial Statement<br>
         <br><br>
         <b>SEMESTER 3</b><br>
-        ▷ AKS301 Property ,Plant And Equipment (PPE)<br>
+        ▷ AKS301 Property ,Plant And Equipment<br>
         ▷ AKS302 Financial Report<br>
-        ▷ AKS303 Hire Purchanse (HP)<br>
+        ▷ AKS303 Hire Purchanse<br>
         <br><br>
         <b>SEMESTER 4</b><br>
         ▷ AKS401 Business Entities Reporting<br>
-        ▷ AKS402 Product Costing<br>
-        ▷ AKS403 On - Job Training<br>
-        ▷ AKS404 Final Year Project</p>
+        ▷ AKS402 Costing<br>
+        ▷ AKS403 On Job Training<br>
+        <br><br>
+        <b>SEMESTER 5</b><br>
+        ▷ AKS501 Final Year Project<br>
+        </p>
     
     </div>
   </div>
@@ -148,40 +211,33 @@
     <img src="assets/images/2.jpg" alt="Course 2">
     <div class="course-description">
         <h4>GRAPHIC MULTIMEDIA</h4>
-        <p style="color: white;">The Kolej Synergy Diploma in Graphic Multimedia is a highly focused and depth professional training qualification designed to prepare students for careers in various concentrations within the specialization of digital multimedia.</p>
+        <p style="color: white;" align="justify">The Kolej Synergy Diploma in Graphic Multimedia is a highly focused and depth professional training qualification designed to prepare students for careers in various concentrations within the specialization of digital multimedia.</p>
           <br><br>
         <h5>COURSE MODULES</h5>
         
         <p style="color: white;"><b>SEMESTER 1</b><br>
-          ▷ MKS101 Pre-Production<br>
-          ▷ MKS102 2D Animation<br>
-          ▷ MKS103 3D Modeling<br>
-          ▷ MKS104 3D Animation<br>
-          ▷ MKS105 Stroage Animation Work
+          ▷ MKS101 PGraphic Interface Production<br>
+          ▷ MKS102 Audio & Video Production<br>
           <br><br>
           <b>SEMESTER 2</b><br>
-          ▷ MKS201 Maintain Workstations<br>
-          ▷ MKS202 Staff Appraisal<br>
-          ▷ MKS203 House Training<br>
-          ▷ MKS204 Costing<br>
-          ▷ MKS205 Inventory Management
+          ▷ MKS201 Interactive Application Development<br>
+          ▷ MKS202 Interactive Multimedia Technical Support<br>
+          ▷ MKS203 Interactive Multimedia Design Supervision<br>
           <br><br>
           <b>SEMESTER 3</b><br>
-          ▷ MKS301 Project Proposal<br>
-          ▷ MKS302 Project Report<br>
-          ▷ MKS303 Multimedia Product<br>
-          ▷ MKS303 Multimedia Presentation<br>
-          ▷ MKS303 Multimedia Production Management<br>
+          ▷ MKS301 Multimedia Production Management<br>
+          ▷ MKS302 Multimedia Instructional Design<br>
+          ▷ MKS303 Multimedia Art Directing<br>
           <br><br>
           <b>SEMESTER 4</b><br>
-          ▷ MKS401 Multimedia Instructional Design<br>
-          ▷ MKS402 Multimedia Art Drawing<br>
-          ▷ MKS403 Multimedia Audio Visual (Av) Direction<br>
-          ▷ MKS404 Multimedia Quality Control
+          ▷ MKS401 Multimedia Audio Visual (AV) Directing<br>
+          ▷ MKS402 Multimedia Quality Control<br>
+          ▷ MKS403 Multimedia Research and Innovation<br>
+
         <br><br>
         <b>SEMESTER 5</b><br>
-        ▷ MKS501 Final Project<br>
-        ▷ MKS502 On Job Training<br>
+        ▷ MKS501 On Job Training<br>
+        ▷ MKS502 Final Year Project<br>
     </div>
   </div>
 
@@ -190,7 +246,7 @@
     <img src="assets/images/3.jpg" alt="Course 3">
     <div class="course-description">
       <h4>ELECTRONIC & ENGINEERING</h4>
-      <p style="color: white;">The Kolej Synergy Diploma in Electronics Industrial is a highly focused and depth professional training qualification designed to prepare students for careers in various concentrations within the specialization of Electronics Industries.</p>
+      <p style="color: white;" align="justify">The Kolej Synergy Diploma in Electronics Industrial is a highly focused and depth professional training qualification designed to prepare students for careers in various concentrations within the specialization of Electronics Industries.</p>
           <br><br>
         <h5>COURSE MODULES</h5>
         
@@ -221,8 +277,8 @@
           ▷ EKS404 Microcontroller Configuration<br>
         <br><br>
         <b>SEMESTER 5</b><br>
-        ▷ EKS501 Final Year Project<br>
-        ▷ EKS502 On - Job Training<br>
+        ▷ EKS501 On Job Training<br>
+        ▷ EKS502 Final Year Project<br>
     </div>
   </div>
 
@@ -231,45 +287,35 @@
     <img src="assets/images/4.jpg" alt="Course 4">
     <div class="course-description">
       <h4>PROGRAMMING & APPLICATION DEVELOPMENT</h4>
-      <p style="color: white;">The Kolej Synergy Diploma in Application Development & Programmingis a highly focused and depth professional training qualification designed to prepare students for careers in various concentrations within the specialization of Application Development & Programming.</p>
+      <p style="color: white;" align="justify">The Kolej Synergy Diploma in Application Development & Programmingis a highly focused and depth professional training qualification designed to prepare students for careers in various concentrations within the specialization of Application Development & Programming.</p>
           <br><br>
         <h5>COURSE MODULES</h5>
       
         <p style="color: white;"><b>SEMESTER 1</b><br>
-          ▷ PKS101 System Specification<br>
-          ▷ PKS102 Requirement Analysis<br>
-          ▷ PKS103 Database Development<br>
-          ▷ PKS104 Application Development<br>
-          ▷ PKS105 System Testing<br>
-          ▷ PKS106 Program Documentation Management<br>
-          ▷ PKS107 Data Management And Security<br>
+          ▷ PKS101 Application Prototype Development<br>
+          ▷ PKS102 Application Module Development<br>
+          ▷ PKS103 Application Module Integration<br>
           <br><br>
           <b>SEMESTER 2</b><br>
-          ▷ PKS201 Risk Management<br>
-          ▷ PKS202 Design Concept<br>
-          ▷ PKS203 Program Development<br>
-          ▷ PKS204 Sql Service<br>
-          ▷ PKS205 Web Development<br>
-          ▷ PKS206 Testing Methodologies<br>
-          ▷ PKS207 Documentation Management<br>
+          ▷ PKS201 Development Environment Deployment<br>
+          ▷ PKS202 Application Bug Fixing<br>
+          ▷ PKS203 Application System Documentation Compilation<br>
+          ▷ PKS204 Application Development Supervision<br>
           <br><br>
           <b>SEMESTER 3</b><br>
-          ▷ PKS301 Network Security<br>
-          ▷ PKS302 Data Stroage Management<br>
-          ▷ PKS303 Supervisory Function<br>
-          ▷ PKS304 Application System Programming<br>
-          ▷ PKS305 Application Database Programming<br>
-          ▷ PKS306 Application Data Entry Adminstration<br>
+          ▷ PKS301 Application Systems Programming<br>
+          ▷ PKS302 Application Database Programming<br>
+          ▷ PKS303 Application Data Entry Administration<br>
+          ▷ PKS304  Application Systems Development Administration<br>
           <br><br>
           <b>SEMESTER 4</b><br>
-          ▷ PKS401 Application System Development Adminstration<br>
-          ▷ PKS402 Infra System Interface Designing<br>
-          ▷ PKS403 Application System Functional Testing<br>
-          ▷ PKS404 Application System Technical Support<br>
+          ▷ PKS401 Infra Systems Interface Designing<br>
+          ▷ PKS402 Application Systems Functional Testingbr>
+          ▷ PKS403 Application Systems Technical Support<br>
+          ▷ PKS404 On Job Training<br>
         <br><br>
         <b>SEMESTER 5</b><br>
-        ▷ PKS501 Final Project<br>
-        ▷ PKS502 On - Job Training<br>
+        ▷ PKS501 Final Year Project<br>
     </div>
   </div>
 
@@ -278,19 +324,19 @@
     <img src="assets/images/5.jpg" alt="Course 5">
     <div class="course-description">
       <h4>COMPUTER NETWORKING</h4>
-      <p style="color: white;">The Kolej Synergy Diploma in Computer Networking is a highly focused and in-depth professional training qualification designed to prepare students for careers in various concentrations within the specialization of Computer Networking and Server Management.</p>
+      <p style="color: white;" align="justify">The Kolej Synergy Diploma in Computer Networking is a highly focused and in-depth professional training qualification designed to prepare students for careers in various concentrations within the specialization of Computer Networking and Server Management.</p>
           <br><br>
         <h5>COURSE MODULES</h5>
        
         <p style="color: white;"><b>SEMESTER 1</b><br>
-          ▷ NKS101 Computer System Set-up<br>
-          ▷ NKS102 Server Installation<br>
-          ▷ NKS103 Network Cable<br>
+          ▷ NKS101 Computer System Installation<br>
+          ▷ NKS102 Computer Networking Structured Cabling System Installation<br>
+          ▷ NKS103 Computer Networking Equipment Installation<br>
           <br><br>
           <b>SEMESTER 2</b><br>
-          ▷ NKS201 Computer Network Set-up<br>
-          ▷ NKS202 Computer Network Maintenace<br>
-          ▷ NKS203 Moblie Device Configuration<br>
+          ▷ NKS201 Computer Networking Equipment Configuration<br>
+          ▷ NKS202 Computer Networking Application Services Configuration<br>
+          ▷ NKS203 Computer Networking Security Hardening<br>
           <br><br>
           <b>SEMESTER 3</b><br>
           ▷ NKS301 Server Configuration<br>
@@ -300,10 +346,11 @@
           <b>SEMESTER 4</b><br>
           ▷ NKS401 Computer Network Maintenace Management<br>
           ▷ NKS402 Computer system And Network Procerementk<br>
-          ▷ NKS403 Practical Traing (OJT)<br>
+          ▷ NKS403 Computer System Maintenance Management<br>
         <br><br>
         <b>SEMESTER 5</b><br>
-        ▷ NKS501 Final Project<br>
+        ▷ NKS501 On Job Training<br>
+        ▷ NKS502 Final Year Project<br>
     </div>
   </div>
 </div>
@@ -317,6 +364,9 @@
         <span aria-hidden="true">&times;</span>
       </button>
       <img src="" id="modalImage" alt="Enlarged image">
+      <div class="modal-body" id="syllabus">
+        
+        
     </div>
   </div>
 </div>
@@ -330,8 +380,15 @@
 $('#imageModal').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget); // Button that triggered the modal
   var imageSrc = button.data('image'); // Extract info from data-* attributes
+   // Extract info from data-* attributes
   var modal = $(this);
   modal.find('#modalImage').attr('src', imageSrc);
+  modal.find("#syllabus").html(syllabus);
+});
+
+$(document).on("click",".course-column",function(){
+    var syllabus = $(this).find(".course-description").html();
+    $('#syllabus').html(syllabus);
 });
 </script>
 

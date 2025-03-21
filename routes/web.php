@@ -6,9 +6,9 @@ use App\Http\Controllers\NotificationController;
 use Illuminate\Support\Facades\Auth;
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 //Login
 // Route::get('/login',[SynergyController::class,'login']);
@@ -18,7 +18,7 @@ Route::get('/login', [SynergyController::class, 'showLoginForm'])->name('login')
 Route::post('/user', [SynergyController::class, 'login']); // Handle login submission
 
 //index
-Route::get('/index',[SynergyController::class,'index']);
+Route::get('/',[SynergyController::class,'index']);
 
 //table
 // Route::view('/table','table')->name('table');
