@@ -6,5 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class content extends Model
 {
-    protected $fillable = ['content_type','content',"image"];
+    protected $fillable = ['section_id','content_type','content_title','content',"image"];
+    public function section()
+    {
+        $this->belongsTo(section::class);
+    }
 }

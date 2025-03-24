@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('contents', function (Blueprint $table) {
             $table->id();
             $table->string('content_type');
-            $table->longText('content')->nullable();
+            $table->string('content_title');
+            $table->json('content')->nullable();
             $table->string('image')->nullable();
             $table->timestamps();
         });
@@ -25,6 +26,11 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::table('contents', function (Blueprint $table) {
+            $table->dropForeign(['section_id']);
+            $table->dropColumn('section_id');
+            
+        });
         Schema::dropIfExists('contents');
     }
 };
