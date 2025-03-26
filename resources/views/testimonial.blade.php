@@ -83,26 +83,19 @@
 <div class="container-1">
 
   <!-- First Row -->
-  <div class="row mb-3">
-      <div class="col-12 col-md-4">
-          <div class="image-container">
-              <img src="assets/images/talk1.jpeg" class="img-fluid rounded shadow-sm" alt="Talk 1" onclick="openModal('assets/images/talk1.jpeg')">
-          </div>
-      </div>
-      <div class="col-12 col-md-4">
-          <div class="image-container">
-              <img src="assets/images/talknew2.jpg" class="img-fluid rounded shadow-sm" alt="Talk 2" onclick="openModal('assets/images/talknew2.jpg')">
-          </div>
-      </div>
-      <div class="col-12 col-md-4">
-          <div class="image-container">
-              <img src="assets/images/talknew3.jpg" class="img-fluid rounded shadow-sm" alt="Talk 3" onclick="openModal('assets/images/talknew3.jpg')">
-          </div>
-      </div>
+  <div class="row">
+      @foreach (json_decode($what_student_say->content->first()->content)->testimonials as $item)
+        <div class="col-12 col-md-4">
+                <div class="image-container">
+                    <img src="{{ $item->image }}" class="img-fluid rounded shadow-sm" alt="{{ $item->image }}" onclick="openModal('{{ $item->image }}')">
+                </div>
+        </div>
+      @endforeach
+      
   </div>
 
   <!-- Second Row -->
-  <div class="row">
+  {{-- <div class="row">
       <div class="col-12 col-md-4">
           <div class="image-container">
               <img src="assets/images/talknew4.jpg" class="img-fluid rounded shadow-sm" alt="Talk 4" onclick="openModal('assets/images/talknew4.jpg')">
@@ -118,7 +111,7 @@
               <img src="assets/images/talknew6.jpg" class="img-fluid rounded shadow-sm" alt="Talk 6" onclick="openModal('assets/images/talknew6.jpg')">
           </div>
       </div>
-  </div>
+  </div> --}}
 
 </div>
 

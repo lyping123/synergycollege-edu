@@ -93,7 +93,7 @@
   
   <a href="#{{session()->has('id') ? session('id') : '' ;}}" id="scrollLink" style="display: none;"><button>success</button></a>
 
-
+  
   <div id="about" class="about-us section">
     <div class="container">
       <div class="row">
@@ -106,8 +106,9 @@
         </div>
         <div class="col-lg-6 col-sm-12">
           <div class="section-heading">
-            <h2>" <span style="color:#ea2328">ABOUT US</span> "</h2>
-            <p style="align: justify; text-align: justify">At Synergy College, we believe in creating a collaborative environment that nurtures creativity, fosters personal growth, and equips students with the skills they need to thrive in a dynamic world. Our diverse programs are designed to blend theoretical knowledge with practical experience, ensuring our graduates are well-prepared for their future careers. Join us on a journey of discovery and empowerment, where your aspirations become reality.
+           
+            <h2>" <span style="color:#ea2328">ABOUT US</span>"</h2>
+            <p style="align: justify; text-align: justify">{{ json_decode($about_us_section->content->first()->content)->aboutus }} </p>
             </p>
             <div class="row">
               <div class="col-lg-4 col-sm-12">
@@ -118,7 +119,7 @@
                     </div>
                     <div class="count-digit">OUR <br>VISION</div>
                     {{-- <div class="count-title">SEO Projects</div> --}}
-                    <p  style="align: justify; text-align: justify">Kolej Synergy aims to be a global leader in education by integrating excellence in teaching, learning, research, and community services.</p>
+                    <p  style="align: justify; text-align: justify">{{ json_decode($about_us_section->content->first()->content)->vision }}</p>
                   </div>
                 </div>
               </div>
@@ -130,7 +131,7 @@
                     </div>
                     <div class="count-digit">OUR MISSION</div>
                     {{-- <div class="count-title">Websites</div> --}}
-                    <p style="align: justify; text-align: justify">The Mission of Kolej Synergy is to provide career-focused quality education that caters to the intellectual, social and cultural needs of learns.</p>
+                    <p style="align: justify; text-align: justify">{{ json_decode($about_us_section->content->first()->content)->mission }}</p>
                   </div>
                 </div>
               </div>
@@ -320,14 +321,11 @@
       <div class="row">
         <div class="col-lg-8 offset-lg-2 col-sm-12">
           <div class="section-heading">
+            
             <h2 style="color: white">SYNERGY COLLEGE HISTORY</h2>
 
             <p style="color: #9b9bad; margin-top:50px; align: justify; text-align: justify; ">
-                Established in 2001, Synergy College is a significant contributor to the field of professional and skill education in Malaysia.
-  <br>Currently, the college is offering TVET Diploma and International Professional Qualifications to local and international students. We are an accredited International College from JPK, Malaysia.
-  <br>Students are eligible to apply government study loan through college. While delivering the government accredited TVET Diploma program, we do prepare the students to sit for international professional examination. Most of our student are capable to obtain double qualifications.
-  <br>All these programs are in the areas of high demand and are well recognized by local and international industries. Our students are undergo a learning system that is holistic and equipping them with the skills and relevant knowledge that can keep them in good stead as they join the workforce.
-  <br>The Malaysian Qualifications Agency (MQA), Ministry of Education and the Department of Skills Development (JPK), Ministry of Human Resources are working together to operate TVET Diploma.
+               {{ json_decode($history_section->content->first()->content)->paragraph }}
             </p>
 
             
@@ -529,44 +527,16 @@
         </div>
       </div>
       <div class="row">
-        <div class=" col-md-4 col-lg-3 col-sm-12">
-          <div class="item first-item">
-            <img src="assets/images/school.png" alt="" style="width: 100px;">
-            <h4>HIGHER 
-              VOCATIONAL 
-              EDUCATION</h4>
+      @foreach (json_decode($who_should_section->content->first()->content) as $item)
+          <div class=" col-md-4 col-lg-3 col-sm-12">
+            <div class="item first-item">
+              <img src="{{ $item->img }}" alt="" style="width: 100px;">
+              <h4>{{ $item->paragraph }}</h4>
+            </div>
           </div>
-        </div>
+      @endforeach
+      </div>
     
-        <div class=" col-md-4 col-lg-3 col-sm-12">
-          <div class="item first-item">
-            <img src="assets/images/course.png" alt="" style="width: 100px;">
-            <h4>EXPERIENTIAL
-              HAND-ON 
-              PRACTICAL</h4>
-          </div>
-        </div>
-    
-        <div class=" col-md-4 col-lg-3 col-sm-12">
-          <div class="item first-item">
-            <img src="assets/images/internship.png" alt="" style="width: 100px;">
-            <h4>INTERNSHIP
-                  /
-              INDUSTRIAL 
-              PLACEMENT</h4>
-          </div>
-        </div>
-    
-        <div class="col-md-4 col-lg-3 col-sm-12">
-          <div class="item first-item">
-            <img src="assets/images/award.png" alt="" style="width: 100px;">
-            <h4>DIPLOMA
-                   /
-              OVERSEAS 
-              CERTIFICATE</h4>
-          </div>
-        </div>
-    </div>
     
     </div>
   </div>
@@ -585,10 +555,13 @@
         <div class="col-lg-6 offset-lg-3">
           <div class="section-heading">
             <h2>WHO SHOULD TAKE THIS TVET PROGRAM</h2>
-            {{-- <span>Our Portfolio</span> --}}
-            <h5 style="margin-top: 80px;">✔ Students seeking industry-relevant practical skills.</h5>
-            <h5 style="margin-top: 50px;">✔ Job Seekers looking for hands-on training to enhance employability.</h5>
-            <h5 style="margin-top: 50px;">✔ Working Professionals who want to upskill and advance their careers.</h5>
+            {{-- @dd((json_decode($who_should_section->content->first()->content))) --}}
+            
+            
+            @foreach ((json_decode($whochoose_section->content->first()->content))->paragraph as $item)
+              <h5 style="margin-top: 80px;">{{ $item }}</h5>
+            @endforeach
+           
           </div>
         </div>
       </div>

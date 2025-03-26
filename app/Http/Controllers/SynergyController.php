@@ -14,9 +14,11 @@ use App\Mail\GuardianNotification;
 use App\Mail\appointment;
 use App\Mail\sendappoiment;
 use App\Models\AppointmentVerification;
+use App\Models\content;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use App\Models\Image;
+use App\Models\section;
 use App\Models\Staff;
 
 
@@ -26,7 +28,13 @@ class SynergyController extends Controller
     public function index() // Renamed method to show the login form
     {
         $images = Image::all();
-        return view('index',compact('images')); // Ensure this view exists in your resources/views directory
+        $about_us_section=section::find(1);
+        // dd($about_us_section->content);
+        $history_section=section::find(2);
+        $whochoose_section=section::find(3);
+        $who_should_section=section::find(4);
+        
+        return view('index',compact('images','about_us_section','history_section','whochoose_section','who_should_section')); // Ensure this view exists in your resources/views directory
     }
 
     public function showLoginForm() // Renamed method to show the login form
@@ -185,17 +193,23 @@ public function form()
 
     public function testimonial() 
     {
-        return view('testimonial'); 
+        $what_student_say=section::find(10);
+        return view('testimonial',compact('what_student_say')); 
     }
 
     public function course() 
     {
-        return view('course'); 
+        $our_course=section::find(11);
+        return view('course',compact('our_course')); 
     }
 
     public function service() 
     {
-        return view('service'); 
+        $study_load=section::find(6);
+        $student_affair=section::find(7);
+        $convocation=section::find(8);
+        $policy=section::find(9);
+        return view('service',compact('study_load','student_affair','convocation','policy')); 
     }
 
     public function directory() 

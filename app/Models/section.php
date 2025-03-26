@@ -9,6 +9,7 @@ class section extends Model
     protected $fillable=["section","img_path"];
     public function content()
     {
-        $this->hasMany(content::class,"section_id");
+        return $this->hasMany(content::class,"section_id","id");
+        
     }
 }

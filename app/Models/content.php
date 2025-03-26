@@ -9,6 +9,6 @@ class content extends Model
     protected $fillable = ['section_id','content_type','content_title','content',"image"];
     public function section()
     {
-        $this->belongsTo(section::class);
+        return $this->belongsTo(section::class);
     }
 }

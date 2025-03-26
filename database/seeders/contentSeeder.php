@@ -41,23 +41,9 @@ class contentSeeder extends Seeder
                         'content_type'=>'short_content',
                         'content_title'=>'our vision',
                         'content'=>json_encode([
-                            "paragraph"=>"Kolej Synergy aims to be a global leader in education by integrating excellence in teaching, learning, research, and community services."
-                        ])
-                    ],
-                    [
-                        "section_id"=>$sectionId,
-                        'content_type'=>'short_content',
-                        'content_title'=>'our mission',
-                        'content'=>json_encode([
-                            "paragraph"=>"The Mission of Kolej Synergy is to provide career-focused quality education that caters to the intellectual, social and cultural needs of learns.",
-                        ])
-                    ],
-                    [
-                        "section_id"=>$sectionId,
-                        'content_type'=>'short_content',
-                        'content_title'=>'about us',
-                        'content'=>json_encode([
-                            "paragraph"=>'At Synergy College, we believe in creating a collaborative environment that nurtures creativity, fosters personal growth, and equips students with the skills they need to thrive in a dynamic world. Our diverse programs are designed to blend theoretical knowledge with practical experience, ensuring our graduates are well-prepared for their future careers. Join us on a journey of discovery and empowerment, where your aspirations become reality.'
+                            "vision"=>"Kolej Synergy aims to be a global leader in education by integrating excellence in teaching, learning, research, and community services.",
+                            "mission"=>"The Mission of Kolej Synergy is to provide career-focused quality education that caters to the intellectual, social and cultural needs of learns.",
+                            "aboutus"=>'At Synergy College, we believe in creating a collaborative environment that nurtures creativity, fosters personal growth, and equips students with the skills they need to thrive in a dynamic world. Our diverse programs are designed to blend theoretical knowledge with practical experience, ensuring our graduates are well-prepared for their future careers. Join us on a journey of discovery and empowerment, where your aspirations become reality.'
                         ])
                     ],
                     [
@@ -193,7 +179,7 @@ The Malaysian Qualifications Agency (MQA), Ministry of Education and the Departm
                         'content'=>json_encode([
                             "convocation_img"=>[
                                 [
-                                    "img"=>"assets/images/head.jpeg",
+                                    "img"=>"assets/images/head.jpg",
                                     "content"=>"GROUP PHOTO"
                                 ],
                                 [
@@ -236,12 +222,7 @@ The Malaysian Qualifications Agency (MQA), Ministry of Education and the Departm
                             "assets/images/book4.jpg",
                             "assets/images/book5.jpg",
                             "assets/images/book6.jpg",
-                            "assets/images/book7.jpg",
-                            "assets/images/book8.jpg",
-                            "assets/images/book9.jpg",
-                            "assets/images/book10.jpg",
-                            "assets/images/book11.jpg",
-                            "assets/images/book12.jpg"
+                            
                         ]
                     ])
                 ]);
@@ -256,19 +237,19 @@ The Malaysian Qualifications Agency (MQA), Ministry of Education and the Departm
                                 "image"=>"assets/images/talk1.jpeg",
                             ],
                             [
-                                "image"=>"assets/images/talk2.jpeg",
+                                "image"=>"assets/images/talknew2.jpg",
                             ],
                             [
-                                "image"=>"assets/images/talk3.jpeg",
+                                "image"=>"assets/images/talknew3.jpg",
                             ],
                             [
-                                "image"=>"assets/images/talk4.jpeg",
+                                "image"=>"assets/images/talknew4.jpg",
                             ],
                             [
-                                "image"=>"assets/images/talk5.jpeg",
+                                "image"=>"assets/images/talknew5.jpg",
                             ],
                             [
-                                "image"=>"assets/images/talk6.jpeg",
+                                "image"=>"assets/images/talknew6.jpg",
                             ]
                         ]
                     ])
