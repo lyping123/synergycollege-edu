@@ -256,15 +256,35 @@
 
                     <div id="content-fields">
                         @if($content->content_type == 'short_content')
+                            
                             @foreach (json_decode($content->content) as $key => $item)
                                 <label>{{ $key }} :</label>
-                                @if (strlen($item)>200)
+                                @if(!is_array($item) && strlen($item)>200)
                                     <textarea name="{{ $key }}" class="form-control">{{ $item }}</textarea>
+                                @elseif($key=="image")
+                                    @foreach ($item as $index=>$image)
+                                    <div class="form-group">
+                                        {{-- <label for="image">Image:</label> --}}
+                                        <div class="image-preview">
+                                            @if ($image)
+                                                <img src="{{ asset($image) }}" alt="Current Image"   width="300" data-input="image-input-{{ $index }}"   class="clickable-image" id="image-preview">
+                                            @else
+                                                <span class="image-placeholder" id="image-preview">No image uploaded yet</span>
+                                            @endif
+                                        </div>
+                                        <input type="file" name="image{{ $index }}" id="image-input-{{ $index }}"  class="form-control hidden-file-input" accept="image/*">
+                                        {{-- <small class="form-text text-muted">Click the image to upload a new one. Leave blank to keep the current image.</small> --}}
+                                        @error('image')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    @endforeach
+                                </div>
                                 @else
                                     <input type="text" name="{{ $key }}" value="{{ $item ?? '' }}" class="form-control">
                                 @endif
 
                             @endforeach
+
                             {{-- <input type="text" name="content" value="{{ json_decode($section->content)->paragraph ?? '' }}" class="form-control"> --}}
                         
                         @elseif($content->content_type == 'long_content')

@@ -84,7 +84,7 @@
 
   <!-- First Row -->
   <div class="row">
-      @foreach (json_decode($what_student_say->content->first()->content)->testimonials as $item)
+      @foreach (json_decode($what_student_say->content->content)->testimonials as $item)
         <div class="col-12 col-md-4">
                 <div class="image-container">
                     <img src="{{ $item->image }}" class="img-fluid rounded shadow-sm" alt="{{ $item->image }}" onclick="openModal('{{ $item->image }}')">

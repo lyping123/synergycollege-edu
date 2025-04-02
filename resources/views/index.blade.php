@@ -99,8 +99,11 @@
       <div class="row">
         <div class="col-lg-6 align-self-center col-sm-12">
           <div class="right-image">
-            <img src="assets/images/section2.jpg" alt="" style="display: block;" class="main-image" style="margin-bottom: 80px;padding-right:30px;">
-            <img src="assets/images/section2a.jpg" alt="" style="display: block;" style="padding-right:30px;">
+            @foreach (json_decode($about_us_section->content->content)->image as $item)
+              <img src="{{ $item }}" alt="" style="display: block;" class="main-image" style="margin-bottom: 80px;padding-right:30px;">
+            @endforeach
+           
+            {{-- <img src="assets/images/section2a.jpg" alt="" style="display: block;" style="padding-right:30px;"> --}}
           </div>
           
         </div>
@@ -180,7 +183,7 @@
             @foreach ($events as $event)
               <div class="item">
                 <div class="thumb">
-                  <img src="assets/images/rumah kasih sayang.jpg" alt="">
+                  <img src="{{ $event->image }}" alt="">
                   <div class="hover-effect" >
                     <div class="inner-content">
                       <a href="#"><h4>{{ $event->title }}</h4></a>

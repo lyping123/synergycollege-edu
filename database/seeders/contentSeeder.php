@@ -45,6 +45,10 @@ class contentSeeder extends Seeder
                             "vision"=>"Kolej Synergy aims to be a global leader in education by integrating excellence in teaching, learning, research, and community services.",
                             "mission"=>"The Mission of Kolej Synergy is to provide career-focused quality education that caters to the intellectual, social and cultural needs of learns.",
                             "aboutus"=>'At Synergy College, we believe in creating a collaborative environment that nurtures creativity, fosters personal growth, and equips students with the skills they need to thrive in a dynamic world. Our diverse programs are designed to blend theoretical knowledge with practical experience, ensuring our graduates are well-prepared for their future careers. Join us on a journey of discovery and empowerment, where your aspirations become reality.',
+                            "image"=>[
+                                "assets/images/section2.jpg",
+                                "assets/images/section2a.jpg",
+                            ]
                         ])
                     ],
 

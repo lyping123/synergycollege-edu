@@ -116,9 +116,24 @@ class SynergyController extends Controller
        
         if($content->content_type=="short_content"){
             $jsonData=json_decode($content->content,true);
+            
             foreach($jsonData as $key=>$value){
+                if(!is_array($value)){
+                    $jsonData[$key]=$request->$key;
+                }else{
+                    // dd($value);
+                    $imagePath=$value;
+                    foreach($value as $index=>$image){
+                        if($request->hasFile("image$index")){
+                            $image = $request->file("image$index");
+                            $path = $image->store('assets/images', 'public');
+                            $imagePath[$index]='storage/'.$path;
+                        }
+                    }
+                    $jsonData[$key]=$imagePath;
+                    // dd($jsonData[$key]);
+                }
                 
-                $jsonData[$key]=$request->$key;
             }
             $content->content=json_encode($jsonData);
         }elseif($content->content_type=="long_content"){
