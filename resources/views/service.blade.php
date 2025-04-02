@@ -203,7 +203,7 @@
     <div class="container">
       <div class="row align-items-center">
         @php
-              $study_load=json_decode($study_load->content->first()->content);
+              $study_load=json_decode($study_load->content->content);
         @endphp
         <div class="col-md-6">
           <img src="{{ $study_load->img }}" alt="Financial Assistance" class="study-loan-img">
@@ -225,7 +225,7 @@
   <div class="container-fluid">
     <h3 style="padding-bottom: 30px;">STUDENT AFFAIR</h3>
     <div class="row">
-      @foreach (json_decode($student_affair->content->first()->content) as $item)
+      @foreach (json_decode($student_affair->content->content) as $item)
         <div class="col-md-2 {{ $loop->index == 0? 'offset-md-1' : '' }} icon-col">
           <img src="{{ $item->img }}" alt="Icon 1" class="icon-img">
           <p class="icon-description">{{ $item->title }}</p>
@@ -244,7 +244,7 @@
         <h4 style="color: white; font-weight: 600;padding-bottom:50px;">SYNERGY COLLEGE CONVOCATION 2024 GROUP PHOTO</h4>
       <div class="row">
         <!-- Group -->
-        @foreach( json_decode($convocation->content->first()->content)->convocation_img as $item)
+        @foreach( json_decode($convocation->content->content) as $item)
           <div class="col-md-4 mb-4">
             <div class="program-item">
               <img src="{{ $item->img }}" alt="Program 0" class="program-img">
@@ -321,7 +321,7 @@
                     </button>
                 </h2>
                 @php
-                    $refund_policy=json_decode($policy->content->first()->content)->refund_policy;
+                    $refund_policy=json_decode($policy->content->content)->refund_policy;
                 @endphp
                 <div id="collapse1" class="accordion-collapse collapse" aria-labelledby="heading1" data-bs-parent="#refundsAccordion">
                     <div class="accordion-body">
@@ -339,7 +339,7 @@
                 </h2>
                 <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="heading2" data-bs-parent="#refundsAccordion">
                     <div class="accordion-body">
-                        @foreach (json_decode($policy->content->first()->content)->student_handbook as $item)
+                        @foreach (json_decode($policy->content->content)->student_handbook as $item)
                         <img src="{{ $item }}" class="img-fluid" alt="Student Handbook 1" style="max-width: 100%; height: auto; border-radius: 10px;">
                         @endforeach
                         

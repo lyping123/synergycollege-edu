@@ -73,7 +73,9 @@ Route::get('/contact',[SynergyController::class,'contact']);
 //dashboard
 Route::get('/dashboard',[SynergyController::class,'dashboard'])->name('dashboard')->middleware('auth');
 
-
+Route::get('/modifycontentPage',[SynergyController::class,'modifycontentPage'])->name('modifycontentPage')->middleware('auth');
+Route::get('/modifycontent/{id}/{course?}',[SynergyController::class,'modifycontent'])->name('modifycontent')->middleware('auth');
+Route::put('/updatecontent/{id}',[SynergyController::class,'updatecontent'])->name('updatecontent')->middleware('auth');
 
 
 Route::post('/update-status', [SynergyController::class, 'updateStatus'])->name('student.details');

@@ -20,8 +20,8 @@ use Illuminate\Support\Facades\Http;
 use App\Models\Image;
 use App\Models\section;
 use App\Models\Staff;
-
-
+use Spatie\PdfToImage\Pdf;
+use stdClass;
 
 class SynergyController extends Controller
 {
@@ -35,6 +35,182 @@ class SynergyController extends Controller
         $who_should_section=section::find(4);
         
         return view('index',compact('images','about_us_section','history_section','whochoose_section','who_should_section')); // Ensure this view exists in your resources/views directory
+    }
+
+    public function modifycontentPage()
+    {
+        $sections=section::where('status',1)->get();
+        return view('modfycontent',compact('sections'));
+    }
+
+    public function modifycontent($id,$course=null){
+        $section=section::find($id);
+        $content=$section->content;
+        
+        return view('editcontent',compact('section','content','course'));
+    }
+
+    public function updatecontent(Request $request,$id)
+    {
+        $content=content::find($id);
+       
+        if($content->content_type=="short_content"){
+            $jsonData=json_decode($content->content,true);
+            foreach($jsonData as $key=>$value){
+                
+                $jsonData[$key]=$request->$key;
+            }
+            $content->content=json_encode($jsonData);
+        }elseif($content->content_type=="long_content"){
+            $jsonData=json_decode($content->content,true);
+            foreach($jsonData as $key=>$value){
+                
+                $jsonData[$key]=$request->$key;
+            }
+            $content->content=json_encode($jsonData);
+        }elseif($content->content_type=="pointform_content"){
+            $jsonData=new stdClass();
+            $pointforms=$request->content;
+            foreach($pointforms as $index=>$value){
+                if($value==""){
+                    continue;
+                }
+                $jsonData->paragraph[]=$value;
+            }
+            $content->content=json_encode($jsonData);
+        }elseif($content->content_type=="imagepointform_content"){
+            $jsonData = json_decode($content->content) ?? [];
+            
+            if (!is_array($jsonData)) {
+                $jsonData = [];
+            }
+             
+            foreach ($request->paragraph as $index => $value) {
+                
+                // if (!isset($jsonData[$index]) || !is_array($jsonData[$index])) {
+                //     $jsonData[$index] = ['paragraph' => '', 'img' => null];
+                // }
+               
+                
+                $jsonData[$index]->paragraph = $value;
+            
+                if ($request->hasFile("image$index")) {
+                    $image = $request->file("image$index");
+                    $path = $image->store('assets/images', 'public');
+                    $jsonData[$index]->img = 'storage/'.$path;
+                }
+
+            }
+            
+            // dd(json_encode($jsonData));
+            $content->content = json_encode($jsonData);
+            $content->save();
+        }elseif($content->content_type=="imagepointtitleform_content"){
+            $jsonData=json_decode($content->content,true)??[];
+            
+            $jsonData["title"]=$request->title;
+            $jsonData["paragraph"]=$request->paragraph;
+            if($request->hasFile("image")){
+                $image = $request->file("image");
+                $path = $image->store('assets/images', 'public');
+                $jsonData["img"]='storage/'.$path;
+            }
+            // dd(json_encode($jsonData));
+            
+            $content->content=json_encode($jsonData);
+
+        }elseif($content->content_type=="mulimagepointtitleform_content"){
+            
+            $jsonData=json_decode($content->content,true)??[];
+            foreach($request->title as $index=>$value){
+                $jsonData[$index]["title"]=$value;
+                $jsonData[$index]["paragraph"]=$request->paragraph[$index];
+            }
+            // dd(json_encode($jsonData));
+            $content->content=json_encode($jsonData);
+        }elseif($content->content_type=="imageform_content"){
+            $jsonData=json_decode($content->content,true)??[];
+            
+            foreach ($request->input('title', []) as $index => $item) {
+                
+                $jsonData[$index]['content'] = $item;
+                if ($request->hasFile("image$index")) {
+                    $image = $request->file("image$index");
+                    $path = $image->store('assets/images', 'public');
+                    $jsonData[$index]['img'] = 'storage/' . $path;
+                }
+            }
+            // dd(json_encode(["convocation_img"=>$jsonData]));
+            $content->content=json_encode($jsonData);
+
+        }elseif($content->content_type=="pdfform_content"){
+            $request->validate([
+                'student_handbook' => 'required|file|mimes:pdf|max:10000', // Max 10MB
+            ]);
+
+            $jsonData = json_decode($content->content, true) ?? [];
+            if ($request->hasFile('student_handbook')) {
+                $pdfFile = $request->file('student_handbook');
+                $pdfPath = $pdfFile->store('pdfs', 'public'); // Store original PDF temporarily
+    
+                // Convert PDF to images
+                $pdf = new Pdf(storage_path('app/public/' . $pdfPath));
+                $pageCount = $pdf->getNumberOfPages();
+    
+                $imagePaths = [];
+                for ($page = 1; $page <= $pageCount; $page++) {
+                    $outputPath = 'assets/images/pdf_page_' . time() . '_' . $page . '.jpg';
+                    $fullOutputPath = storage_path('app/public/' . $outputPath);
+    
+                    // Ensure the directory exists
+                    if (!file_exists(dirname($fullOutputPath))) {
+                        mkdir(dirname($fullOutputPath), 0755, true);
+                    }
+    
+                    // Convert page to image
+                    $pdf->setPage($page)
+                        ->setOutputFormat('jpg')
+                        ->saveImage($fullOutputPath);
+    
+                    $imagePaths[] = 'storage/' . $outputPath; // Path for asset()
+                }
+    
+                // Add image paths to JSON
+                $jsonData['images'] = $imagePaths;
+    
+                // Optional: Delete the original PDF if you don’t need it
+                // Storage::disk('public')->delete($pdfPath);
+            }
+            dd(json_encode($jsonData));
+            $content->content = json_encode($jsonData);
+        }elseif($content->content_type=="html_content"){
+            $jsonData=json_decode($content->content,true);
+            $jsonData[$request->course]['content']=$request->content;
+            
+            if($request->hasFile("image")){
+                $image = $request->file("image");
+                $path = $image->store('assets/images', 'public');
+                $jsonData[$request->course]["image"]='storage/'.$path;
+            }
+            
+            // dd($jsonData);
+            $content->content=json_encode($jsonData);
+        }elseif($content->content_type=="directory_content"){
+            $jsonData=json_decode($content->content,true)??[];
+            foreach($request->name as $index=>$value){
+                $jsonData[$index]["name"]=$value;
+                $jsonData[$index]["position"]=$request->position[$index];
+                $jsonData[$index]["phone"]=$request->phone[$index];
+                $jsonData[$index]["email"]=$request->email[$index];
+
+            }
+            // dd(json_encode($jsonData));
+            $content->content=json_encode($jsonData);
+        }
+        
+        $content->save();
+        return redirect()->route('modifycontentPage')->with("success","content update successfully");
+        
     }
 
     public function showLoginForm() // Renamed method to show the login form
@@ -215,8 +391,8 @@ public function form()
     public function directory() 
     {
         // Fetch all staff members from the database
-        $staff = Staff::all();
-        
+        $staff = section::find(12);
+
         // Pass the $staff data to the view
         return view('directory', compact('staff')); 
     }

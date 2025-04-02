@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string("section");
             $table->string("img_path");
+            $table->boolean("status")->default(1);
             $table->timestamps();
         });
 

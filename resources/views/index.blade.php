@@ -108,7 +108,7 @@
           <div class="section-heading">
            
             <h2>" <span style="color:#ea2328">ABOUT US</span>"</h2>
-            <p style="align: justify; text-align: justify">{{ json_decode($about_us_section->content->first()->content)->aboutus }} </p>
+            <p style="align: justify; text-align: justify">{{ json_decode($about_us_section->content->content)->aboutus }} </p>
             </p>
             <div class="row">
               <div class="col-lg-4 col-sm-12">
@@ -119,7 +119,7 @@
                     </div>
                     <div class="count-digit">OUR <br>VISION</div>
                     {{-- <div class="count-title">SEO Projects</div> --}}
-                    <p  style="align: justify; text-align: justify">{{ json_decode($about_us_section->content->first()->content)->vision }}</p>
+                    <p  style="align: justify; text-align: justify">{{ json_decode($about_us_section->content->content)->vision }}</p>
                   </div>
                 </div>
               </div>
@@ -131,7 +131,7 @@
                     </div>
                     <div class="count-digit">OUR MISSION</div>
                     {{-- <div class="count-title">Websites</div> --}}
-                    <p style="align: justify; text-align: justify">{{ json_decode($about_us_section->content->first()->content)->mission }}</p>
+                    <p style="align: justify; text-align: justify">{{ json_decode($about_us_section->content->content)->mission }}</p>
                   </div>
                 </div>
               </div>
@@ -325,7 +325,7 @@
             <h2 style="color: white">SYNERGY COLLEGE HISTORY</h2>
 
             <p style="color: #9b9bad; margin-top:50px; align: justify; text-align: justify; ">
-               {{ json_decode($history_section->content->first()->content)->paragraph }}
+               {{ json_decode($history_section->content->content)->paragraph }}
             </p>
 
             
@@ -527,7 +527,7 @@
         </div>
       </div>
       <div class="row">
-      @foreach (json_decode($who_should_section->content->first()->content) as $item)
+      @foreach (json_decode($who_should_section->content->content) as $item)
           <div class=" col-md-4 col-lg-3 col-sm-12">
             <div class="item first-item">
               <img src="{{ $item->img }}" alt="" style="width: 100px;">
@@ -558,7 +558,7 @@
             {{-- @dd((json_decode($who_should_section->content->first()->content))) --}}
             
             
-            @foreach ((json_decode($whochoose_section->content->first()->content))->paragraph as $item)
+            @foreach ((json_decode($whochoose_section->content->content))->paragraph as $item)
               <h5 style="margin-top: 80px;">{{ $item }}</h5>
             @endforeach
            

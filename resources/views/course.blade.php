@@ -172,7 +172,7 @@ h2 {
 <div class="course-gallery">
   <!-- Course Column 1 -->
   {{-- @dd(json_decode($our_course->content->first()->content)) --}}
-  @foreach (json_decode($our_course->content->first()->content) as $item)
+  @foreach (json_decode($our_course->content->content) as $item)
   <div class="course-column" data-toggle="modal" data-target="#imageModal" data-image="{{ $item->image }}">
     <img src="{{ $item->image }}" alt="Course 1">
     <div class="course-description">

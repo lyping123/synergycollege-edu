@@ -15,17 +15,18 @@ class contentSeeder extends Seeder
     {
         
         $sections = [
-            ["section" => "about_us_section", "img_path" => "img1"],
-            ["section" => "history_section", "img_path" => "img1"],
-            ["section" => "why_choose_section", "img_path" => "img1"],
-            ["section" => "who_should_section", "img_path" => "img1"],
-            ["section" => "registration_section", "img_path" => "img1"],
-            ["section" => "study_load", "img_path" => "img1"],
-            ["section" => "student_affair", "img_path" => "img1"],
-            ["section" => "convocation", "img_path" => "img1"],
-            ["section" => "policy", "img_path" => "img1"],
-            ["section" => "what_student_say", "img_path" => "img1"],
-            ["section" => "our_course", "img_path" => "img1"]
+            ["section" => "ABOUT US SECTION", "img_path" => "img1"],
+            ["section" => "SYNERGY COLLEGE HISTORY SECTION", "img_path" => "img1"],
+            ["section" => "WHO SHOULD TAKE THIS TVET PROGRAM SECTION", "img_path" => "img1"],
+            ["section" => "WHY CHOOSE SYNERGY COLLEGE SECTION", "img_path" => "img1"],
+            ["section" => "Student registration", "img_path" => "img1","status"=>0],
+            ["section" => "STUDY LOAD SECTION", "img_path" => "img1"],
+            ["section" => "STUDENT AFFAIR SECTION", "img_path" => "img1"],
+            ["section" => "CONVOCATION SECTION", "img_path" => "img1"],
+            ["section" => "POLICY SECTION", "img_path" => "img1","status"=>0],
+            ["section" => "TESTIMONIAL SECTION", "img_path" => "img1","status"=>0],
+            ["section" => "OUR COURSES SECTION", "img_path" => "img1"],
+            ["section" => "OUR STAFF DIRECTORY", "img_path" => "img1"]
         ];
 
 
@@ -43,20 +44,9 @@ class contentSeeder extends Seeder
                         'content'=>json_encode([
                             "vision"=>"Kolej Synergy aims to be a global leader in education by integrating excellence in teaching, learning, research, and community services.",
                             "mission"=>"The Mission of Kolej Synergy is to provide career-focused quality education that caters to the intellectual, social and cultural needs of learns.",
-                            "aboutus"=>'At Synergy College, we believe in creating a collaborative environment that nurtures creativity, fosters personal growth, and equips students with the skills they need to thrive in a dynamic world. Our diverse programs are designed to blend theoretical knowledge with practical experience, ensuring our graduates are well-prepared for their future careers. Join us on a journey of discovery and empowerment, where your aspirations become reality.'
+                            "aboutus"=>'At Synergy College, we believe in creating a collaborative environment that nurtures creativity, fosters personal growth, and equips students with the skills they need to thrive in a dynamic world. Our diverse programs are designed to blend theoretical knowledge with practical experience, ensuring our graduates are well-prepared for their future careers. Join us on a journey of discovery and empowerment, where your aspirations become reality.',
                         ])
                     ],
-                    [
-                        "section_id"=>$sectionId,
-                        'content_type'=>'image_content',
-                        'content_title'=>'about us',
-                        'content'=>json_encode([
-                            "image"=>[
-                                'assets/images/section2.jpg',
-                                'assets/images/section2a.jpg'
-                            ]
-                        ])
-                    ]
 
                     
                     ]);
@@ -123,7 +113,7 @@ The Malaysian Qualifications Agency (MQA), Ministry of Education and the Departm
                 DB::table("contents")->insert([
                     [
                         "section_id"=>$sectionId,
-                        'content_type'=>'imageform_content',
+                        'content_type'=>'imagepointtitleform_content',
                         'content_title'=>'study load',
                         'content'=>json_encode([
                             "img"=>"assets/images/studyloan.png",
@@ -137,7 +127,7 @@ The Malaysian Qualifications Agency (MQA), Ministry of Education and the Departm
                 DB::table("contents")->insert([
                     [
                         "section_id"=>$sectionId,
-                        'content_type'=>'imagepointtitleform_content',
+                        'content_type'=>'mulimagepointtitleform_content',
                         'content_title'=>'student affair',
                         'content'=>json_encode([
                             [
@@ -174,10 +164,10 @@ The Malaysian Qualifications Agency (MQA), Ministry of Education and the Departm
                 DB::table("contents")->insert([
                     [
                         "section_id"=>$sectionId,
-                        'content_type'=>'imageform',
+                        'content_type'=>'imageform_content',
                         'content_title'=>'convocation',
                         'content'=>json_encode([
-                            "convocation_img"=>[
+                            
                                 [
                                     "img"=>"assets/images/head.jpg",
                                     "content"=>"GROUP PHOTO"
@@ -203,7 +193,7 @@ The Malaysian Qualifications Agency (MQA), Ministry of Education and the Departm
                                     "content"=>"ACCOUNTING"
                                 ],
 
-                            ]
+                            
                         ])
                     ],
                     
@@ -211,7 +201,7 @@ The Malaysian Qualifications Agency (MQA), Ministry of Education and the Departm
             }elseif($sectionId==9){
                 DB::table("contents")->insert([
                     "section_id"=>$sectionId,
-                    'content_type'=>'pdfform',
+                    'content_type'=>'pdfform_content',
                     'content_title'=>'policy',
                     'content'=>json_encode([
                         "refund_policy"=>"assets/images/refund.jpg",
@@ -229,7 +219,7 @@ The Malaysian Qualifications Agency (MQA), Ministry of Education and the Departm
             }elseif($sectionId==10){
                 DB::table("contents")->insert([
                     "section_id"=>$sectionId,
-                    'content_type'=>'testimonial',
+                    'content_type'=>'imageform_content',
                     'content_title'=>'what student say',
                     'content'=>json_encode([
                         "testimonials"=>[
@@ -257,7 +247,7 @@ The Malaysian Qualifications Agency (MQA), Ministry of Education and the Departm
             }elseif($sectionId==11){
                 DB::table("contents")->insert([
                     "section_id"=>$sectionId,
-                    'content_type'=>'our_course',
+                    'content_type'=>'html_content',
                     'content_title'=>'our course',
                     'content'=>json_encode([
                         "accounting"=>[
@@ -425,6 +415,44 @@ The Malaysian Qualifications Agency (MQA), Ministry of Education and the Departm
         ▷ NKS502 Final Year Project<br>'
                         ]
 
+                    ])
+                ]);
+            }elseif($sectionId==12){
+                DB::table('contents')->insert([
+                    "section_id"=>$sectionId,
+                    'content_type'=>'directory_content',
+                    'content_title'=>'our staff directory',
+                    'content'=>json_encode([
+                        [
+                            "img"=>"assets/images/principal.jpg",
+                            "name"=>"MR.KC NEOH",
+                            "position"=>"COLLEGE ADVISOR",
+                            "phone"=>"0124081851",
+                            "email"=>"support@synergycollege.edu.my"
+                        ],
+                        [
+                            "img"=>"assets/images/analyst.png",
+                            "name"=>"MS.SY CH'NG",
+                            "position"=>"REGISTRAR",
+                            "phone"=>"0195720999",
+                            "email"=>"sy@synergycollege.edu.my",
+                        ],
+                        [
+                            "img"=>"assets/images/businesswoman.png",
+                            "name"=>"MS.SITI",
+                            "position"=>"ADMIN DEPARTMENT",
+                            "phone"=>"0164456145",
+                            "email"=>"info@synergycollege.edu.my",
+                        ],
+                        [
+                            "img"=>"assets/images/consultation.png",
+                            "name"=>"MR.CC NG",
+                            "position"=>"COUNSELLOR",
+                            "phone"=>"0124346832",
+                            "email"=>"c2@synergycollege.edu.my",
+                        ],
+                        
+                        
                     ])
                 ]);
             }

@@ -111,11 +111,12 @@
 <div class="container-1">
   <div class="container-fluid px-4">
     <div class="row">
-      @foreach($staff as $person)
+
+      @foreach(json_decode($staff->content->content) as $person)
       <!-- Staff Member -->
       <div class="col-md-3 mb-4">
         <div class="staff-card text-center" style="padding-top: 50px; padding-bottom:50px;">
-          <img src="{{ asset('assets/images/' . $person->image) }}" alt="{{ $person->name }}" class="staff-img mb-3">
+          <img src="{{ $person->img }}" alt="{{ $person->name }}" class="staff-img mb-3">
           <h4>{{ $person->name }}</h4>
           <p style="margin-bottom: 50px;">{{ $person->position }}</p>
           <u><h6>CONTACT INFORMATION</h6></u>
