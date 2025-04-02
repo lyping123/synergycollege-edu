@@ -189,8 +189,8 @@ table{
             <ul>
                 <li><a href="/dashboard" <?php echo $_SERVER['REQUEST_URI'] == '/dashboard' ? 'style="color:#ea2328;"' : ''; ?>>DASHBOARD</a></li>
                 <li><a href="/modifycontentPage" <?php echo $_SERVER['REQUEST_URI'] == '/modifycontentPage' ? 'style="color:#ea2328;"' : ''; ?>>MODIFY CONTENT</a></li>
+                <li><a href="/eventPage" <?php echo $_SERVER['REQUEST_URI'] == '/event' ? 'style="color:#ea2328;"' : ''; ?>>UPDATE EVENT</a></li>
                 <li><a href="/image" <?php echo $_SERVER['REQUEST_URI'] == '/image' ? 'style="color:#ea2328;"' : ''; ?>>UPDATE IMAGE</a></li>
-                <li><a href="/update_new" <?php echo $_SERVER['REQUEST_URI'] == '/update_new' ? 'style="color:#ea2328;"' : ''; ?>>UPDATE CONTACT</a></li>
                 
             </ul>
             </ul>

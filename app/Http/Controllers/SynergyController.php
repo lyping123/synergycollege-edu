@@ -15,6 +15,7 @@ use App\Mail\appointment;
 use App\Mail\sendappoiment;
 use App\Models\AppointmentVerification;
 use App\Models\content;
+use App\Models\event;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use App\Models\Image;
@@ -33,8 +34,9 @@ class SynergyController extends Controller
         $history_section=section::find(2);
         $whochoose_section=section::find(3);
         $who_should_section=section::find(4);
+        $events=event::all();
         
-        return view('index',compact('images','about_us_section','history_section','whochoose_section','who_should_section')); // Ensure this view exists in your resources/views directory
+        return view('index',compact('images','about_us_section','history_section','whochoose_section','who_should_section','events')); // Ensure this view exists in your resources/views directory
     }
 
     public function modifycontentPage()
@@ -48,6 +50,64 @@ class SynergyController extends Controller
         $content=$section->content;
         
         return view('editcontent',compact('section','content','course'));
+    }
+    public function eventPage()
+    {
+        $events=event::all();
+        return view('event',compact('events'));
+    }
+    public function add_event(Request $request)
+    {
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'title' => 'required|string|max:255',
+            'date' => 'required|date',
+            'time' => 'required|string|max:50',
+            'location' => 'required|string|max:255',
+        ]);
+
+        $event = new event();
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $path = $image->store('assets/images', 'public');
+            $event->image = 'storage/'.$path;
+        }
+        $event->title = $request->input('title');
+        $event->date = $request->input('date');
+        $event->time = $request->input('time');
+        $event->location = $request->input('location');
+        $event->save();
+
+        return redirect()->route('eventPage')->with("success","Event added successfully");
+    }
+
+    public function edit_event(event $event, Request $request)
+    {
+        $request->validate([
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'title' => 'required|string|max:255',
+            'date' => 'required|date',
+            'time' => 'required|string|max:50',
+            'location' => 'required|string|max:255',
+        ]);
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $path = $image->store('assets/images', 'public');
+            $event->image = 'storage/'.$path;
+        }
+        $event->title = $request->input('title');
+        $event->date = $request->input('date');
+        $event->time = $request->input('time');
+        $event->location = $request->input('location');
+        $event->save();
+
+        return redirect()->route('eventPage')->with("success","Event updated successfully");
+    }
+    public function delete_event(event $event)
+    {
+        $event->delete();
+        return redirect()->route('eventPage')->with("success","Event deleted successfully");
     }
 
     public function updatecontent(Request $request,$id)
@@ -220,27 +280,27 @@ class SynergyController extends Controller
 
 
     public function login(Request $request)
-{
-    $request->validate([
-        'name' => 'required',
-        'password' => 'required',
-    ]);
+    {
+        $request->validate([
+            'name' => 'required',
+            'password' => 'required',
+        ]);
 
-    // Use 'name' as the column for username
-    $user = User::where('name', $request->name)->first();
+        // Use 'name' as the column for username
+        $user = User::where('name', $request->name)->first();
 
 
-    if (!$user) {
-        return back()->withErrors(['name' => 'The username does not exist.']);
+        if (!$user) {
+            return back()->withErrors(['name' => 'The username does not exist.']);
+        }
+
+        if (!Hash::check($request->password, $user->password)) {
+            return back()->withErrors(['password' => 'The password is incorrect.']);
+        }
+
+        Auth::login($user);
+        return redirect('dashboard')->with('success', 'You have successfully logged in!');
     }
-
-    if (!Hash::check($request->password, $user->password)) {
-        return back()->withErrors(['password' => 'The password is incorrect.']);
-    }
-
-    Auth::login($user);
-    return redirect('dashboard')->with('success', 'You have successfully logged in!');
-}
 
 
 

@@ -77,6 +77,10 @@ Route::get('/modifycontentPage',[SynergyController::class,'modifycontentPage'])-
 Route::get('/modifycontent/{id}/{course?}',[SynergyController::class,'modifycontent'])->name('modifycontent')->middleware('auth');
 Route::put('/updatecontent/{id}',[SynergyController::class,'updatecontent'])->name('updatecontent')->middleware('auth');
 
+Route::get("/eventPage",[SynergyController::class,'eventPage'])->name('eventPage')->middleware('auth');
+Route::post("/addEvent",[SynergyController::class,'add_event'])->name('add_event')->middleware('auth');
+Route::post("/editEvent/{event}/edit",[SynergyController::class,'edit_event'])->name('edit_event')->middleware('auth');
+Route::delete("/deleteEvent/{event}/delete",[SynergyController::class,'delete_event'])->name('delete_event')->middleware('auth');
 
 Route::post('/update-status', [SynergyController::class, 'updateStatus'])->name('student.details');
 

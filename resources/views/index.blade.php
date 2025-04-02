@@ -177,20 +177,23 @@
       <div class="row">
         <div class="col-lg-12">
           <div class="owl-carousel owl-portfolio">
-            <div class="item">
-              <div class="thumb">
-                <img src="assets/images/rumah kasih sayang.jpg" alt="">
-                <div class="hover-effect" >
-                   <div class="inner-content">
-                    <a href="#"><h4>CHARITY FOR ORPHANS EVENTS</h4></a>
-                    <span><strong>📅 Date:</strong> 02 FEBRUARY 2025</span><br>
-                    <span><strong>🕒 Time:</strong> 1:00 PM - 4:00 PM</span><br>
-                    <span><strong>📍 Location:</strong>Bukit Mertajam</span>
+            @foreach ($events as $event)
+              <div class="item">
+                <div class="thumb">
+                  <img src="assets/images/rumah kasih sayang.jpg" alt="">
+                  <div class="hover-effect" >
+                    <div class="inner-content">
+                      <a href="#"><h4>{{ $event->title }}</h4></a>
+                      <span><strong>📅 Date:</strong> {{ \Carbon\Carbon::parse($event->date)->format('d M Y') }}</span><br>
+                      <span><strong>🕒 Time:</strong> {{ $event->time }}</span><br>
+                      <span><strong>📍 Location:</strong>{{ $event->location }}</span>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="item">
+            @endforeach
+            
+            {{-- <div class="item">
               <div class="thumb">
                 <img src="assets/images/bownling.jpg" alt="">
                 <div class="hover-effect">
@@ -228,7 +231,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> --}}
             {{-- <div class="item">
               <div class="thumb">
                 <img src="assets/images/portfolio-03.jpg" alt="">

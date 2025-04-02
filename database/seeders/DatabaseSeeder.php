@@ -16,12 +16,12 @@ class DatabaseSeeder extends Seeder
     {
         // Create a single user with a hashed password
         User::factory()->create([
-            'name' => 'rongci',
+            'name' => 'admin',
             'password' => Hash::make('1234'), // Replace 'your_password_here' with the actual password
         ]);
         
         $this->call(contentSeeder::class);
-
+        $this->call(eventSeeder::class);
         
     }
 }
