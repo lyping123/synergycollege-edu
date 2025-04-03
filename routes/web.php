@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\careerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SynergyController;
 use App\Http\Controllers\NotificationController;
@@ -142,5 +143,10 @@ Route::get('/get-student-details', [SynergyController::class, 'getStudentDetails
 
 // Route::get('/students', [SynergyController::class, 'form'])->name('students.list');
 
+Route::get("/careerForm", [careerController::class, 'index'])->name("careerForm");
+Route::post("/career/store",[careerController::class, 'store'])->name("career.store");
 
-
+// app('view')->composer('careerForm', function($view){
+//     $career = career::all();
+//     $view->with('career', $career);
+// });

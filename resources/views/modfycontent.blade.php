@@ -206,8 +206,10 @@
                             <tr>
                                 <td>{{ $index+1 }}</td>
                                 <td>{{ $section->section }}</td>
-                                <td>{{ $section->image_path }}</td>
                                 
+                                <td>
+                                    <img src="{{ $section->img_path }}" style="width: 150px;height:100px;" />
+                                </td>
                                 <td>
                                     @if($section->id==11)
                                         <div class="dropdown">

@@ -454,7 +454,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="content">HTML Content:</label>
-                                <textarea name="content" id="editor" class="form-control">{{ $html_content?? '' }}</textarea>
+                                <textarea name="content" id="editor" class="form-control">{!! $html_content?? '' !!}</textarea>
                             </div>
                         @elseif($content->content_type == 'directory_content')
                         @foreach (json_decode($content->content) as $index=>$value)

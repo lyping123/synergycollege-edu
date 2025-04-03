@@ -363,6 +363,8 @@ class SynergyController extends Controller
         'secondary_school' => 'required|string|max:255',
     ]);
 
+    $validatedData["status"]="ACTIVE";
+
     // Create a new student record
     Student::create($validatedData);
 

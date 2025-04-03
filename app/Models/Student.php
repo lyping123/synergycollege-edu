@@ -27,6 +27,7 @@ class Student extends Model
         'guardian_contact_no',
         'email',
         'course',
+        'status',
         'secondary_school',
     ];
 }

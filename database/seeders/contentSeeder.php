@@ -15,18 +15,18 @@ class contentSeeder extends Seeder
     {
         
         $sections = [
-            ["section" => "ABOUT US SECTION", "img_path" => "img1"],
-            ["section" => "SYNERGY COLLEGE HISTORY SECTION", "img_path" => "img1"],
-            ["section" => "WHO SHOULD TAKE THIS TVET PROGRAM SECTION", "img_path" => "img1"],
-            ["section" => "WHY CHOOSE SYNERGY COLLEGE SECTION", "img_path" => "img1"],
-            ["section" => "Student registration", "img_path" => "img1","status"=>0],
-            ["section" => "STUDY LOAD SECTION", "img_path" => "img1"],
-            ["section" => "STUDENT AFFAIR SECTION", "img_path" => "img1"],
-            ["section" => "CONVOCATION SECTION", "img_path" => "img1"],
-            ["section" => "POLICY SECTION", "img_path" => "img1","status"=>0],
-            ["section" => "TESTIMONIAL SECTION", "img_path" => "img1","status"=>0],
-            ["section" => "OUR COURSES SECTION", "img_path" => "img1"],
-            ["section" => "OUR STAFF DIRECTORY", "img_path" => "img1"]
+            ["section" => "ABOUT US SECTION", "img_path" => "assets/images/section/abountus_section.PNG"],
+            ["section" => "SYNERGY COLLEGE HISTORY SECTION", "img_path" => "assets/images/section/college_history_section.PNG"],
+            ["section" => "WHO SHOULD TAKE THIS TVET PROGRAM SECTION", "img_path" => "assets/images/section/whoshould_section.PNG"],
+            ["section" => "WHY CHOOSE SYNERGY COLLEGE SECTION", "img_path" => "assets/images/section/whychoose_section.PNG"],
+            ["section" => "Student registration", "img_path" => "assets/images/section/college_history_section.PNG","status"=>0],
+            ["section" => "STUDY LOAD SECTION", "img_path" => "assets/images/section/studyload_section.PNG"],
+            ["section" => "STUDENT AFFAIR SECTION", "img_path" => "assets/images/section/studentaffair_section.PNG"],
+            ["section" => "CONVOCATION SECTION", "img_path" => "assets/images/section/convocation_section.PNG"],
+            ["section" => "POLICY SECTION", "img_path" => "assets/images/section/policy_section.PNG","status"=>0],
+            ["section" => "TESTIMONIAL SECTION", "img_path" => "assets/images/section/testimonial_section.PNG","status"=>0],
+            ["section" => "OUR COURSES SECTION", "img_path" => "assets/images/section/course_section.PNG"],
+            ["section" => "OUR STAFF DIRECTORY", "img_path" => "assets/images/section/staffDirectory_section.PNG"]
         ];
 
 

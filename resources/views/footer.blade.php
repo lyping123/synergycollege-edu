@@ -8,7 +8,7 @@
       <div class="col-lg-3" >
         <div class="about footer-item" style="align-items: center; justify-content: center; display: flex; flex-wrap: wrap;">
           <div class="">
-            <a href="/index"><img src="assets/images/school3.png" alt="Kolej Synergy Logo" style="width: 80px;"></a>
+            <a href="/"><img src="assets/images/school3.png" alt="Kolej Synergy Logo" style="width: 80px;"></a>
           </div>
           <p style="color: black; font-size:15px;font-weight:500;margin-top:20px;padding-right:30px; text-align:justify;">Dedicated to providing reliable and timely maintenance services for educational institutions.</p>
           <div class="social-icons">
@@ -27,7 +27,7 @@
         <div class="quick-links footer-item">
           <h4 style="font-size: 20px;">QUICK LINKS</h4>
           <ul style="color: black;font-size:14px;font-family:arial;line-height:25px;">
-                <li><a href="/index" <?php echo $_SERVER['REQUEST_URI'] == '/index' ? 'style="color:#ea2328;"' : ''; ?>>HOME</a></li>
+                <li><a href="/" <?php echo $_SERVER['REQUEST_URI'] == '/' ? 'style="color:#ea2328;"' : ''; ?>>HOME</a></li>
                 <li><a href="#subscribe" id="student-registration-link">STUDENT REGISTRATION</a></li>
                 <li><a href="/testimonial" <?php echo $_SERVER['REQUEST_URI'] == '/testimonial' ? 'style="color:#ea2328;"' : ''; ?>>TESTIMONIAL</a></li>
                 <li><a href="/course" <?php echo $_SERVER['REQUEST_URI'] == '/course' ? 'style="color:#ea2328;"' : ''; ?>>COURSES</a></li>
