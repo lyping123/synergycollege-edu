@@ -198,7 +198,7 @@ https://templatemo.com/tm-565-onix-digital
         <nav style="display: block">
             <ul id="nav-menu">
                 <li><a href="/">Home</a></li>
-                <li><a href="/#subscribe">Student Registration</a></li>
+                <li><a href="/#registration">Student Registration</a></li>
                 <li><a href="/testimonial">Testimonial</a></li>
                 <li><a href="/course">Courses</a></li>
                 <li><a href="/service">Our Services</a></li>
@@ -234,14 +234,14 @@ https://templatemo.com/tm-565-onix-digital
         var link = document.getElementById('student-registration-link');
     
         // Check if the current section matches the #subscribe anchor
-        if (currentSection === '#subscribe') {
+        if (currentSection === '#registration') {
           // Apply an active class or inline style to highlight the active link
           link.style.color = '#ea2328';  // Change color for active link
         }
     
         // Optionally, you can listen for hash changes if navigating between sections
         window.addEventListener('hashchange', function() {
-          if (window.location.hash === '#subscribe') {
+          if (window.location.hash === '#registration') {
             link.style.color = '#ea2328';  // Highlight the active link
           } else {
             link.style.color = '';  // Reset color if not active

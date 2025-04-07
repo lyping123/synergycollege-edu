@@ -25,6 +25,7 @@ class careerController extends Controller
         $request->validate([
             'e_name' => 'required|string|max:255',
             'e_ic' => 'required|string|max:20',
+            'e_gender' => 'required|string',
             'e_address' => 'required|string',
             'e_quanlification' => 'required|string|max:255',
             'e_mstatus' => 'required|in:Single,Married',

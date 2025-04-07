@@ -20,6 +20,16 @@
                 <input type="text" class="form-control @error('e_ic') is-invalid @enderror" id="e_ic" name="e_ic" value="{{ old('e_ic') }}" required>
                 @error('e_ic') <div class="invalid-feedback">{{ $message }}</div> @enderror
             </div>
+            <div class="mb-3">
+                <label for="e_gender" class="form-label">Gender</label>
+                <select class="form-select @error('e_gender') is-invalid @enderror" id="e_gender" name="e_gender" required>
+                    <option value="" disabled selected>Select gender</option>
+                    <option value="Male" {{ old('e_gender') == 'Male' ? 'selected' : '' }}>Male</option>
+                    <option value="Female" {{ old('e_gender') == 'Female' ? 'selected' : '' }}>Female</option>
+                    {{-- <option value="Divorced" {{ old('e_mstatus') == 'Divorced' ? 'selected' : '' }}>Divorced</option> --}}
+                </select>
+                @error('e_gender') <div class="invalid-feedback">{{ $message }}</div> @enderror
+            </div>
 
             {{-- Address --}}
             <div class="mb-3">

@@ -10,6 +10,7 @@ class career extends Model
     protected $fillable = [
         'e_name',
         'e_ic',
+        'e_gender',
         'e_address',
         'e_quanlification',
         'e_mstatus',

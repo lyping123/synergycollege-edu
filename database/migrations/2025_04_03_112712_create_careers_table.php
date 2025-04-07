@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string("e_name");
             $table->string("e_ic");
+            $table->string("e_gender");
             $table->longText("e_address");
             $table->string("e_quanlification");
             $table->string("e_mstatus");

@@ -719,7 +719,7 @@
 
   
   
-  <div id="subscribe" class="subscribe">
+  <div id="registration" class="subscribe">
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
