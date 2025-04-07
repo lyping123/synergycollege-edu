@@ -109,20 +109,22 @@
 </div>
 
 <div class="container-1">
-  <div class="container-fluid px-4">
+  <div class="container-fluid px-4 mt-5">
     <div class="row">
 
       @foreach(json_decode($staff->content->content) as $person)
       <!-- Staff Member -->
-      <div class="col-md-3 mb-4">
+      <div class="col-md-3 mb-4 col-sm-6 col-xs-12">
         <div class="staff-card text-center" style="padding-top: 50px; padding-bottom:50px;">
           <img src="{{ $person->img }}" alt="{{ $person->name }}" class="staff-img mb-3">
           <h4>{{ $person->name }}</h4>
           <p style="margin-bottom: 50px;">{{ $person->position }}</p>
           <u><h6>CONTACT INFORMATION</h6></u>
-          <p><i class="fas fa-envelope"></i>
-            <a href="mailto:{{ $person->email }}" target="_blank">{{ $person->email }}</a>
-          </p>
+          <u>
+            <p style="overflow: hidden;"><i class="fas fa-envelope"></i>
+              <a href="mailto:{{ $person->email }}"   target="_blank">{{ $person->email }}</a>
+            </p>
+          </u>
           <p><i class="fas fa-phone"></i>
             <a href="https://wa.me/{{ $person->phone }}" target="_blank">{{ $person->phone }}</a>
           </p>

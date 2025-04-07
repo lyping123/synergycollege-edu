@@ -97,10 +97,13 @@
   <div id="about" class="about-us section">
     <div class="container">
       <div class="row">
-        <div class="col-lg-6 align-self-center col-sm-12">
-          <div class="right-image">
+        <div class="col-lg-6 align-self-center col-sm-12"  >
+          <div class="right-image" style="display: block;" >
+            {{-- <img src="{{ $about_us_section->image }}" alt="" style="width: 100%; height: 400px; padding-bottom: 30px;"> --}}
+            
             @foreach (json_decode($about_us_section->content->content)->image as $item)
-              <img src="{{ $item }}" alt="" style="display: block;" class="main-image" style="margin-bottom: 80px;padding-right:30px;">
+              <img src="{{ $item }}" alt="" style="width: 100%; height: 400px; padding-bottom: 30px;">
+              {{-- <img src="{{ $item }}" alt=""  class="main-image" style="margin-bottom: 80px;padding-right:30px;"> --}}
             @endforeach
            
             {{-- <img src="assets/images/section2a.jpg" alt="" style="display: block;" style="padding-right:30px;"> --}}

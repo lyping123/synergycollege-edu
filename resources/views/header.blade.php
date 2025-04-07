@@ -204,6 +204,7 @@ https://templatemo.com/tm-565-onix-digital
                 <li><a href="/service">Our Services</a></li>
                 <li><a href="/directory">Directory</a></li>
                 <li><a href="/contact">Contact</a></li>
+                <li><a href="/careerForm">Career</a></li>
             </ul>
         </nav>
     </div>
