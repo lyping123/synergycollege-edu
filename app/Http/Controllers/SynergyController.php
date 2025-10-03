@@ -392,11 +392,11 @@ class SynergyController extends Controller
     Student::create($validatedData);
     if($pre_student){
         return redirect()->back()->with('success', 'Registration submitted successfully!')
-                            ->with('id','subscribe');
+                            ->with('id','registration');
     }
     // Redirect back with success message
     return redirect()->back()->with('success', 'Registration submitted successfully!')
-                            ->with('id','subscribe');
+                            ->with('id','registration');
 }
 
 
