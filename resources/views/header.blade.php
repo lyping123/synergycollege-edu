@@ -202,7 +202,7 @@ https://templatemo.com/tm-565-onix-digital
                 <li><a href="/testimonial">Testimonial</a></li>
                 <li><a href="/course">Courses</a></li>
                 <li><a href="/service">Our Services</a></li>
-                <li><a href="/directory">Directory</a></li>
+                {{-- <li><a href="/directory">Directory</a></li> --}}
                 <li><a href="/contact">Contact</a></li>
                 <li><a href="/careerForm">Career</a></li>
             </ul>

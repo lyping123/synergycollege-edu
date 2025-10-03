@@ -32,7 +32,7 @@
                 <li><a href="/testimonial" <?php echo $_SERVER['REQUEST_URI'] == '/testimonial' ? 'style="color:#ea2328;"' : ''; ?>>TESTIMONIAL</a></li>
                 <li><a href="/course" <?php echo $_SERVER['REQUEST_URI'] == '/course' ? 'style="color:#ea2328;"' : ''; ?>>COURSES</a></li>
                 <li><a href="/service" <?php echo $_SERVER['REQUEST_URI'] == '/service' ? 'style="color:#ea2328;"' : ''; ?>>OUR SERVICES</a></li>
-                <li><a href="/directory" <?php echo $_SERVER['REQUEST_URI'] == '/directory' ? 'style="color:#ea2328;"' : ''; ?>>DIRECTORY</a></li>
+                
                 <li><a href="/contact" <?php echo $_SERVER['REQUEST_URI'] == '/contact' ? 'style="color:#ea2328;"' : ''; ?>>CONTACT</a></li>
                 <li><a href="/careerForm" <?php echo $_SERVER['REQUEST_URI'] == '/careerForm' ? 'style="color:#ea2328;"' : ''; ?>>CAREER</a></li>
           </ul>

@@ -12,6 +12,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\GuardianNotification;
 use App\Mail\appointment;
+use App\Mail\registrationMail;
 use App\Mail\sendappoiment;
 use App\Models\AppointmentVerification;
 use App\Models\content;
@@ -382,7 +383,8 @@ class SynergyController extends Controller
         'status'=>'ACTIVE'
     ]);
 
-
+    //lyping0526@gmail.com
+    Mail::to("lyping0526@gmail.com")->send(new registrationMail($pre_student));
 
     
 
