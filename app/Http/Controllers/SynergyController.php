@@ -19,6 +19,7 @@ use App\Models\event;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use App\Models\Image;
+use App\Models\pre_registration;
 use App\Models\section;
 use App\Models\Staff;
 use Spatie\PdfToImage\Pdf;
@@ -59,7 +60,7 @@ class SynergyController extends Controller
     public function add_event(Request $request)
     {
         $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:15360',
             'title' => 'required|string|max:255',
             'date' => 'required|date',
             'time' => 'required|string|max:50',
@@ -364,10 +365,32 @@ class SynergyController extends Controller
     ]);
 
     $validatedData["status"]="ACTIVE";
+    $pre_student=pre_registration::create([
+        's_name'=>$validatedData['full_name'],
+        'ic'=>$validatedData['ic_no'],
+        's_email'=>(string)$validatedData['email'],
+        'nationality'=>$validatedData['nationality'],
+        'race'=>$validatedData['race'],
+        'r_address'=>(string)$validatedData['address'],
+        'r_postcode'=>(string)$validatedData['postcode'],
+        'r_state'=>(string)$validatedData['state'],
+        'h_contact'=>(string)$validatedData['contact_no'],
+        'guardian'=>(string)$validatedData['guardian_contact_no'],
+        'secondary_school'=>(string)$validatedData['secondary_school'],
+        'course'=>(string)$validatedData['course'],
+        'gender'=>(string)$validatedData['gender'],
+    ]);
+
+
+
+    
 
     // Create a new student record
     Student::create($validatedData);
-
+    if($pre_student){
+        return redirect()->back()->with('success', 'Registration submitted successfully!')
+                            ->with('id','subscribe');
+    }
     // Redirect back with success message
     return redirect()->back()->with('success', 'Registration submitted successfully!')
                             ->with('id','subscribe');

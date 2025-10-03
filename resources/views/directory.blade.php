@@ -25,7 +25,7 @@
 
   .container-1 {
     background: lightgray;
-    padding: 80px;
+    padding: 80px 20px;
   }
 
   #staff-directory {
@@ -109,7 +109,7 @@
 </div>
 
 <div class="container-1">
-  <div class="container-fluid px-4 mt-5">
+  <div class="container-fluid  ">
     <div class="row">
 
       @foreach(json_decode($staff->content->content) as $person)

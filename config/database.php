@@ -61,6 +61,19 @@ return [
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
         ],
+            'student_db' => [
+            'driver' => 'mysql',
+            'host' => env('STU_DB_HOST', '127.0.0.1'),
+            'port' => env('STU_DB_PORT', '3306'),
+            'database' => env('STU_DB_DATABASE', 'attendance_db'),
+            'username' => env('STU_DB_USERNAME', 'root'),
+            'password' => env('_DB_PASSWORD', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'strict' => true,
+            'engine' => null,
+        ],
 
         'mariadb' => [
             'driver' => 'mariadb',
