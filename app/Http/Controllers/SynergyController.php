@@ -379,6 +379,7 @@ class SynergyController extends Controller
         'secondary_school'=>(string)$validatedData['secondary_school'],
         'course'=>(string)$validatedData['course'],
         'gender'=>(string)$validatedData['gender'],
+        'status'=>'ACTIVE'
     ]);
 
 
