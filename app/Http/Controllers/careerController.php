@@ -49,6 +49,7 @@ class careerController extends Controller
             $career['e_attachment'] = json_encode($filePath);
             
         }
+        $career['e_status']="ACTIVE";
     
         career::create($career);
         return redirect()->route("careerForm")->with("success","career form submitted successfully");
