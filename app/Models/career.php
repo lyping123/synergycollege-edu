@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class career extends Model
 {
-   
+    protected $table = 'career';
+    protected $connection ='student_db';
+    
     protected $fillable = [
         'e_name',
         'e_ic',
