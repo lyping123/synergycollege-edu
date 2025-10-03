@@ -384,7 +384,10 @@ class SynergyController extends Controller
     ]);
 
     //lyping0526@gmail.com
-    Mail::to("lyping0526@gmail.com")->send(new registrationMail($pre_student));
+    // sysynergy@hotmail.com
+    
+    
+    Mail::to("support@synergycollege.edu.my")->send(new registrationMail($pre_student));
 
     
 
