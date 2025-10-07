@@ -72,7 +72,7 @@ class SynergyController extends Controller
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $path = $image->store('assets/images', 'public');
-            $event->image = 'storage/'.$path;
+            $event->image = 'storage/app/public/'.$path;
         }
         $event->title = $request->input('title');
         $event->date = $request->input('date');
@@ -96,7 +96,7 @@ class SynergyController extends Controller
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $path = $image->store('assets/images', 'public');
-            $event->image = 'storage/'.$path;
+            $event->image = 'storage/app/public/'.$path;
         }
         $event->title = $request->input('title');
         $event->date = $request->input('date');
@@ -129,7 +129,7 @@ class SynergyController extends Controller
                         if($request->hasFile("image$index")){
                             $image = $request->file("image$index");
                             $path = $image->store('assets/images', 'public');
-                            $imagePath[$index]='storage/'.$path;
+                            $imagePath[$index]='storage/app/public/'.$path;
                         }
                     }
                     $jsonData[$key]=$imagePath;
@@ -174,7 +174,7 @@ class SynergyController extends Controller
                 if ($request->hasFile("image$index")) {
                     $image = $request->file("image$index");
                     $path = $image->store('assets/images', 'public');
-                    $jsonData[$index]->img = 'storage/'.$path;
+                    $jsonData[$index]->img = 'storage/app/public/'.$path;
                 }
 
             }
@@ -190,7 +190,7 @@ class SynergyController extends Controller
             if($request->hasFile("image")){
                 $image = $request->file("image");
                 $path = $image->store('assets/images', 'public');
-                $jsonData["img"]='storage/'.$path;
+                $jsonData["img"]='storage/app/public/'.$path;
             }
             // dd(json_encode($jsonData));
             
@@ -214,7 +214,7 @@ class SynergyController extends Controller
                 if ($request->hasFile("image$index")) {
                     $image = $request->file("image$index");
                     $path = $image->store('assets/images', 'public');
-                    $jsonData[$index]['img'] = 'storage/' . $path;
+                    $jsonData[$index]['img'] = 'storage/app/public/' . $path;
                 }
             }
             // dd(json_encode(["convocation_img"=>$jsonData]));
@@ -267,7 +267,7 @@ class SynergyController extends Controller
             if($request->hasFile("image")){
                 $image = $request->file("image");
                 $path = $image->store('assets/images', 'public');
-                $jsonData[$request->course]["image"]='storage/'.$path;
+                $jsonData[$request->course]["image"]='storage/app/public/'.$path;
             }
             
             // dd($jsonData);
